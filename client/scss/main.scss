@@ -8,8 +8,32 @@ $primary-font:'Grandesign Neue Roman';
 *{
     font-size: 16px;
     font-family: $primary-font;
+    margin: 0;
+    padding: 0;
+}
+
+.bg-ste{
+    background:#fff url("/client/public/media/bg-ste.png") no-repeat left;
+    background-size: 25%;
+    background-position-x: 90px;
+    height: 100vh;
+    width: 100vh;
+}
+
+.content{
+    position: relative;
+}
+
+.bodyContent{
+    position: absolute;
+    width: 90%;
+    top: 10px;
+    left:15%;
 }
 
 @import '../scss/login.scss';
 @import '../scss/buttons.scss';
+@import '../scss/menu.scss';
+@import '../scss/utilities.scss';
+@import '../scss/managment.scss';
 @import '../node_modules/bootstrap/scss/bootstrap.scss';

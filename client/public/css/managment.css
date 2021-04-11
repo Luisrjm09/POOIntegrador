@@ -1,0 +1,13 @@
+.management b {
+  font-size: 1em;
+}
+
+.buttons {
+  position: absolute;
+  left: 10%;
+  width: 90%;
+  bottom: 5%;
+  display: flex;
+  justify-content: center;
+}
+/*# sourceMappingURL=managment.css.map */
