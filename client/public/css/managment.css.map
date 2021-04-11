@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AACI,WADO,CACP,CAAC,CAAA;EACG,SAAS,EAAE,GAAG;CACjB;;AAGL,AAAA,QAAQ,CAAA;EACJ,QAAQ,EAAC,QAAQ;EACjB,IAAI,EAAE,GAAG;EACT,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,EAAE;EACV,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;CAC1B",
-    "sources": [
-        "../../scss/managment.scss"
-    ],
-    "names": [],
-    "file": "managment.css"
-}
