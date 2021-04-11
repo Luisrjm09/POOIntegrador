@@ -1,4 +1,11 @@
 .login{
+    background:#fff url("/client/public/media/bg-ste.png") no-repeat left;
+    background-size: 25%;
     height: 100vh;
-    background-color: red;
+    width: 100vh;
+    img{
+        display: block;
+        max-width: 300px;
+        margin:auto;
+    }
 }

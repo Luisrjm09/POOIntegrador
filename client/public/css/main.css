@@ -1,10 +1,33 @@
+@font-face {
+  font-family: "Grandesign Neue Roman";
+  src: url("/client/public/fonts/Grandesign Neue Roman.ttf") format(ttf);
+}
+
 * {
   font-size: 16px;
+  font-family: "Grandesign Neue Roman";
 }
 
 .login {
+  background: #fff url("/client/public/media/bg-ste.png") no-repeat left;
+  background-size: 25%;
   height: 100vh;
-  background-color: red;
+  width: 100vh;
+}
+
+.login img {
+  display: block;
+  max-width: 300px;
+  margin: auto;
+}
+
+.customBtn {
+  background-color: #182E46;
+  border: none;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
 }
 
 /*!
