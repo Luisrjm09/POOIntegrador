@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/client/public/css/main.css" />
+    <link rel="stylesheet" href="../public/css/main.css">
 
     <script
       defer
@@ -43,40 +43,74 @@
 </head>
 <body>
     <div class="container bg-ste mx-0 px-0">
-        <div class="content mx-0 px-0">
-          <div class="menu">
-            <div><i class="fas fa-address-book"></i></div>
-            <div><i class="fas fa-dollar-sign"></i></div>
-            <div><i class="fas fa-boxes"></i></div>
-            <div><i class="fas fa-wrench"></i></div>
-            <div><i class="rotate-l90 fas fa-ticket-alt"></i></div>
-          </div>
-  
-          <div class="bodyContent management">
-            <button class="customBtn w-25">Agregar servicio</button>
+      <div class="content mx-0 px-0">
+        <div class="menu">
+          <div><i class="fas fa-address-book"></i></div>
+          <div><i class="fas fa-dollar-sign"></i></div>
+          <div><i class="fas fa-boxes"></i></div>
+          <div><i class="fas fa-wrench"></i></div>
+          <div><i class="rotate-l90 fas fa-ticket-alt"></i></div>
+        </div>
 
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Servicio</th>
-                        <th>Descripcion</th>
-                        <th class="text-center">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Cambio de pantalla</td>
-                        <td>Cambio de pantalla con repuesto del cliente</td>
-                        <td class="d-flex justify-content-around">
-                            <div class="d-inline-block"><i class="fas fa-edit"></i></div>
-                            <div class="d-inline-block"><i class="fas fa-trash-alt"></i></div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="bodyContent management">
+          <button class="customBtn w-25" data-toggle="modal" data-target="#addService">Agregar servicio</button>
+
+          <table class="table table-bordered">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Servicio</th>
+                      <th>Descripcion</th>
+                      <th class="text-center">Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">3</th>
+                      <td>Cambio de pantalla</td>
+                      <td>Cambio de pantalla con repuesto del cliente</td>
+                      <td class="d-flex justify-content-around">
+                          <div class="d-inline-block"><i class="fas fa-edit"></i></div>
+                          <div class="d-inline-block"><i class="fas fa-trash-alt"></i></div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+
+<!-- Modal -->
+<div class="modal fade" id="addService" tabindex="-1" aria-labelledby="addService" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div>
+        <p class="headerModal">Agregar servicio</p>
+        
+        <div class="mx-auto">
+          <i class="modalIcon fas fa-wrench d-inline-block"></i>
+          <input type="text" class="d-inline" placeholder="Ingresar nombre servicio">
+        </div>
+
+        <div class="mx-auto">
+          <i class="modalIcon fas fa-comment-alt d-inline-block"></i>
+          <input type="text" class="d-inline" placeholder="Ingresar descripcion">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+      </div>
+    </div >
 </body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
 </html>
