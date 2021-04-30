@@ -5,3 +5,16 @@
 .h-100vh{
     height: 100vh;
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+    &:hover{
+        color: #fff;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,21 @@
+.menu {
+  margin: 0 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #182E46;
+  width: 10%;
+  color: #fff;
+  height: 100vh;
+}
+
+.menu div {
+  cursor: pointer;
+  text-align: center;
+  font-size: 3.125em;
+}
+
+.rotate-l90 {
+  transform: rotate(90deg);
+}
+/*# sourceMappingURL=menu.css.map */
