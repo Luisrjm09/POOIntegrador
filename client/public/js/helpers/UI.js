@@ -95,7 +95,7 @@ class Table{
         })
     }
 
-    addActions(body,icons){
+    addActions(body,icons,action){
         const bodyID = document.getElementById(body);
         const rows = bodyID.querySelectorAll('tr');
 
@@ -103,9 +103,12 @@ class Table{
             const htmlElement = document.createElement('TD');
             htmlElement.className = `d-flex justify-content-around`;
             for(let j=0;j<icons.length;j++){
+                const containerIcon = document.createElement('DIV');
                 const icon = document.createElement('I');
+                containerIcon.appendChild(icon);
                 icon.className = `${icons[j]} cursor-pointer`;
-                htmlElement.appendChild(icon);
+                containerIcon.className =`${action[j]}`
+                htmlElement.appendChild(containerIcon);
             }
             rows[i].appendChild(htmlElement);
         }

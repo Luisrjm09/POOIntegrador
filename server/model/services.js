@@ -33,6 +33,48 @@ class Services{
             });
         })
     }
+
+    async deleteService(request,response,next){
+        console.log(`■ Deleting from db...`);
+
+        await db.query('DELETE FROM servicios WHERE id = ?',
+        request.params.idService,
+        (error,result,columns)=>{
+            if(error){
+                return response.json({
+                    status:500,
+                    message:error
+                })
+            }
+
+            return response.json({
+                status:200,
+                message:`Eliminado correcto`
+            });
+
+        })
+    }
+
+    async editService(request,response,next){
+        console.log(`■ Editing user...`);
+
+        const {updatedDescription,updateName,idService} = request.body;
+
+        await db.query(`UPDATE servicios SET nombre = ? , descripcion = ? WHERE id = ?`,
+            [updateName,updatedDescription,idService],
+            (error,result,columns)=>{
+                if(error){
+                    return response.json({
+                        status:500,
+                        message:error
+                    });
+                }
+                return response.json({
+                    status:200,
+                    message:`Servicio actualizado`
+                });
+            })
+    }
 }
 
 const ModelServices = new Services();

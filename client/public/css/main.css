@@ -18,6 +18,10 @@
   width: 100vh;
 }
 
+svg {
+  pointer-events: visiblePainted;
+}
+
 .content {
   position: relative;
 }
@@ -61,6 +65,8 @@
 }
 
 .menu {
+  position: relative;
+  z-index: 100;
   margin: 0 0;
   display: flex;
   justify-content: space-around;
