@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../public/css/main.css" />
-    <title>Clientes</title>
+    <title>Tickets</title>
 
     <script
       defer
@@ -55,18 +55,38 @@
           <button
             class="customBtn w-25 mb-4"
             data-toggle="modal"
-            data-target="#addClient"
+            data-target="#newTicket"
           >
-            Agregar cliente
+            Nuevo ticket
+          </button>
+
+          <button
+            class="ml-3 customBtn w-25 mb-4"
+            data-toggle="modal"
+            data-target="#newTicket"
+          >
+            Imprimir ticket
+          </button>
+
+          <button
+            class="ml-3 customBtn w-25 mb-4"
+            data-toggle="modal"
+            data-target="#searchTicket"
+          >
+            Buscar Folio
           </button>
 
           <table class="table table-bordered">
             <thead>
               <tr class="text-center">
                 <th>#</th>
-                <th>Nombre</th>
-                <th>Telefono/Whatsapp</th>
-                <th>Conoce por</th>
+                <th>Servicio</th>
+                <th>Fecha de recepcion</th>
+                <th>Fecha de entrega</th>
+                <th>Pago</th>
+                <th>Cotizacion</th>
+                <th>Estado</th>
+                <th>Total</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -158,18 +178,30 @@
                 </div>
 
                 <div class="d-flex align-items-center justify-content-center">
-                  <input type="radio" name="recommendation" id="fb" value="0">
-                  <label class="mb-0 ml-2"  for="fb">Facebook</label>
+                  <input type="radio" name="recommendation" id="fb" value="0" />
+                  <label class="mb-0 ml-2" for="fb">Facebook</label>
                 </div>
 
                 <div class="d-flex align-items-center justify-content-center">
-                  <input type="radio" name="recommendation" id="whatsapp" value="1">
-                  <label class="mb-0 ml-2"  for="whatsapp">Whatsapp</label>
+                  <input
+                    type="radio"
+                    name="recommendation"
+                    id="whatsapp"
+                    value="1"
+                  />
+                  <label class="mb-0 ml-2" for="whatsapp">Whatsapp</label>
                 </div>
 
-                <div class="d-flex align-items-center justify-content-center mb-3">
-                  <input type="radio" name="recommendation" id="recommendation" value="2">
-                  <label class="mb-0 ml-2"  for="recommendation">Recomendacion</label>
+                <div
+                  class="d-flex align-items-center justify-content-center mb-3"
+                >
+                  <input
+                    type="radio"
+                    name="recommendation"
+                    id="recommendation"
+                    value="2"
+                  />
+                  <label class="mb-0 ml-2" for="recommendation">Whatsapp</label>
                 </div>
 
                 <div class="modal-footer">
@@ -256,7 +288,6 @@
       </div>
     </div>
   </body>
-
   <script
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -272,5 +303,5 @@
     integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
     crossorigin="anonymous"
   ></script>
-  <script src="../public/js/clients/indexBundle.js"></script>
+  <script src="../public/js/tickets/indexBundle.js"></script>
 </html>

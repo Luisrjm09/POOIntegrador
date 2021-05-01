@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../public/css/main.css" />
-    <title>Clientes</title>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../public/css/main.css">
 
     <script
       defer
@@ -38,8 +38,10 @@
       href="../public/media/icons-tab/favicon-16x16.png"
     />
     <link rel="manifest" href="../public/media/icons-tab/site.webmanifest" />
-  </head>
-  <body>
+
+    <title>Gestion - Mov</title>
+</head>
+<body>
     <div class="container bg-ste mx-0 px-0">
       <div class="content mx-0 px-0">
         <div class="menu" id="menu"></div>
@@ -55,19 +57,19 @@
           <button
             class="customBtn w-25 mb-4"
             data-toggle="modal"
-            data-target="#addClient"
+            data-target="#newTicket"
           >
-            Agregar cliente
+            Nuevo movimiento
           </button>
 
           <table class="table table-bordered">
             <thead>
               <tr class="text-center">
                 <th>#</th>
-                <th>Nombre</th>
-                <th>Telefono/Whatsapp</th>
-                <th>Conoce por</th>
-                <th>Acciones</th>
+                <th>Cantidad</th>
+                <th>Concepto</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
               </tr>
             </thead>
             <tbody id="bodyServices"></tbody>
@@ -158,18 +160,30 @@
                 </div>
 
                 <div class="d-flex align-items-center justify-content-center">
-                  <input type="radio" name="recommendation" id="fb" value="0">
-                  <label class="mb-0 ml-2"  for="fb">Facebook</label>
+                  <input type="radio" name="recommendation" id="fb" value="0" />
+                  <label class="mb-0 ml-2" for="fb">Facebook</label>
                 </div>
 
                 <div class="d-flex align-items-center justify-content-center">
-                  <input type="radio" name="recommendation" id="whatsapp" value="1">
-                  <label class="mb-0 ml-2"  for="whatsapp">Whatsapp</label>
+                  <input
+                    type="radio"
+                    name="recommendation"
+                    id="whatsapp"
+                    value="1"
+                  />
+                  <label class="mb-0 ml-2" for="whatsapp">Whatsapp</label>
                 </div>
 
-                <div class="d-flex align-items-center justify-content-center mb-3">
-                  <input type="radio" name="recommendation" id="recommendation" value="2">
-                  <label class="mb-0 ml-2"  for="recommendation">Recomendacion</label>
+                <div
+                  class="d-flex align-items-center justify-content-center mb-3"
+                >
+                  <input
+                    type="radio"
+                    name="recommendation"
+                    id="recommendation"
+                    value="2"
+                  />
+                  <label class="mb-0 ml-2" for="recommendation">Whatsapp</label>
                 </div>
 
                 <div class="modal-footer">
@@ -256,21 +270,20 @@
       </div>
     </div>
   </body>
-
   <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
-    crossorigin="anonymous"
-  ></script>
-  <script src="../public/js/clients/indexBundle.js"></script>
+  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+  integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+  crossorigin="anonymous"
+></script>
+<script src="../public/js/inventory/indexBundle.js"></script>
 </html>
