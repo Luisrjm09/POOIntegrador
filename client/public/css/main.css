@@ -118,7 +118,7 @@ svg {
   padding: 0.625em 0px;
 }
 
-input {
+input, select {
   border-radius: 0.1875em;
   border: 0.0625em solid #000;
   height: 3.125em;

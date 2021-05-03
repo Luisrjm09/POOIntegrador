@@ -77,18 +77,27 @@ class Table{
         this.data = data;
     }
 
-    createRow(idBody){
+    createRow(idBody,attributePrint,idRow){
         this.data.map((info,i)=>{
             const htmlElement = document.createElement('TR');
-            htmlElement.setAttribute("id",info.id);
+            htmlElement.setAttribute("id",info[idRow]);
             htmlElement.setAttribute("value",JSON.stringify(info));
             
             const columnsData = Object.keys(info).length;
             
             for(let j=0;j<columnsData;j++){
-                const dataCell = document.createElement('TD');
-                dataCell.innerText = info[Object.keys(info)[j]];
-                htmlElement.appendChild(dataCell);
+                const attributeName = Object.keys(info)[j];
+                let addElement = 0;
+
+                attributePrint.map(element=>{
+                    {attributeName===element ? addElement+=1 : null}
+                });
+                
+                if(addElement===1){
+                    const dataCell = document.createElement('TD');
+                    dataCell.innerText = info[Object.keys(info)[j]];
+                    htmlElement.appendChild(dataCell);
+                }
             }
             
             document.getElementById(idBody).appendChild(htmlElement);
@@ -114,6 +123,25 @@ class Table{
         }
     }
 
+    getInfoRow(e){
+        const idRow = e.target.parentNode.parentNode.parentNode.parentNode.getAttribute("id");
+        const data = JSON.parse(document.getElementById(idRow).getAttribute("value"));
+        return data;
+    }
+
 }
 
-module.exports = {Table};
+class Inputs{
+    createSelect(options,idInsert,valueName,valueText){
+        
+        let htmlOptions = `<option disabled value="" selected="true"></option>`;
+
+        options.map(option=>{
+            htmlOptions+= `<option value="${option[valueName]}">${option[valueText]}</option>`;
+        });
+
+        document.getElementById(idInsert).innerHTML = htmlOptions;
+    }
+}
+
+module.exports = {Table,Inputs};

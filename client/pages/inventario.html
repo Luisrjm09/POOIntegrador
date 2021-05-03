@@ -46,10 +46,10 @@
         <div class="menu" id="menu"></div>
 
         <button
-          id="btnEditService"
+          id="btnOpenEdit"
           class="d-none"
           data-toggle="modal"
-          data-target="#modalEditService"
+          data-target="#modalEditProduct"
         ></button>
 
         <div class="bodyContent management">
@@ -73,8 +73,8 @@
             <thead>
               <tr class="text-center">
                 <th>Codigo</th>
-                <th>Descripcion</th>
                 <th>Categoria</th>
+                <th>Descripcion</th>
                 <th>Stock</th>
                 <th>Precio compra</th>
                 <th>Precio venta</th>
@@ -85,7 +85,7 @@
           </table>
         </div>
 
-        <!-- Modal agregar -->
+        <!-- ADD CATEGORY -->
         <div
           class="modal fade"
           id="newCategory"
@@ -122,7 +122,7 @@
                   </button>
                   <button
                     type="button"
-                    id="btnAddService"
+                    id="btnAddCategory"
                     class="customBtn w-25"
                   >
                     Guardar
@@ -133,6 +133,7 @@
           </div>
         </div>
 
+        <!-- ADD PRODUCT -->
         <div
           class="modal fade"
           id="newProduct"
@@ -144,21 +145,6 @@
             <div class="modal-content">
               <form id="formEditService">
                 <p class="headerModal">Agregar producto</p>
-                <input type="hidden" id="idService" />
-                <div
-                  class="mt-5 ml-5 d-flex justify-content-start align-items-center"
-                >
-                  <div class="w-25">
-                    <b>Codigo</b>
-                  </div>
-                  <input
-                    id="serviceNameEdit"
-                    type="text"
-                    class="ml-3 d-inline w-50"
-                    placeholder="Ingresar nombre servicio"
-                  />
-                </div>
-
                 <div
                   class="mt-5 ml-5 d-flex justify-content-start align-items-center"
                 >
@@ -166,11 +152,24 @@
                     <b>Descripcion</b>
                   </div>
                   <input
-                    id="serviceNameEdit"
+                    id="addProductName"
                     type="text"
                     class="ml-3 d-inline w-50"
-                    placeholder="Ingresar nombre servicio"
                   />
+                </div>
+
+                <div
+                  class="mt-5 ml-5 d-flex justify-content-start align-items-center"
+                >
+                  <div class="w-25">
+                    <b>Categoria</b>
+                  </div>
+                  <select class="ml-3 w-50" name="categorys" id="categorys">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
                 </div>
 
                 <div
@@ -180,10 +179,9 @@
                     <b>Stock</b>
                   </div>
                   <input
-                    id="serviceNameEdit"
+                    id="addProductStock"
                     type="text"
                     class="ml-3 d-inline w-50"
-                    placeholder="Ingresar nombre servicio"
                   />
                 </div>
 
@@ -194,10 +192,9 @@
                     <b>Precio compra</b>
                   </div>
                   <input
-                    id="serviceNameEdit"
+                    id="addProductPrice"
                     type="text"
                     class="ml-3 d-inline w-50"
-                    placeholder="Ingresar nombre servicio"
                   />
                 </div>
 
@@ -208,10 +205,9 @@
                     <b>Precio Venta</b>
                   </div>
                   <input
-                    id="serviceNameEdit"
+                    id="addProductSell"
                     type="text"
                     class="ml-3 d-inline w-50"
-                    placeholder="Ingresar nombre servicio"
                   />
                 </div>
 
@@ -225,7 +221,105 @@
                   </button>
                   <button
                     type="button"
-                    id="btnUpdateService"
+                    id="btnAddProduct"
+                    class="customBtn w-25"
+                  >
+                    Guardar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- EDIT PRODUCT -->
+        <div
+          class="modal fade"
+          id="modalEditProduct"
+          tabindex="-1"
+          aria-labelledby="modalEditProduct"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <form id="formEditService">
+                <p class="headerModal">Editar producto</p>
+
+                <input type="number" id="editProductCode" hidden>
+
+                <div
+                  class="mt-5 ml-5 d-flex justify-content-start align-items-center"
+                >
+                  <div class="w-25">
+                    <b>Descripcion</b>
+                  </div>
+                  <input
+                    id="editProductDescription"
+                    type="text"
+                    class="ml-3 d-inline w-50"
+                  />
+                </div>
+
+                <div
+                  class="mt-5 ml-5 d-flex justify-content-start align-items-center"
+                >
+                  <div class="w-25">
+                    <b>Categoria</b>
+                  </div>
+                  <select class="ml-3 w-50" name="categorys" id="editCategory">
+                  </select>
+                </div>
+
+                <div
+                  class="mt-5 ml-5 d-flex justify-content-start align-items-center"
+                >
+                  <div class="w-25">
+                    <b>Stock</b>
+                  </div>
+                  <input
+                    id="editProductStock"
+                    type="text"
+                    class="ml-3 d-inline w-50"
+                  />
+                </div>
+
+                <div
+                  class="mt-5 ml-5 d-flex justify-content-start align-items-center"
+                >
+                  <div class="w-25">
+                    <b>Precio compra</b>
+                  </div>
+                  <input
+                    id="editProductPrice"
+                    type="text"
+                    class="ml-3 d-inline w-50"
+                  />
+                </div>
+
+                <div
+                  class="mt-5 ml-5 d-flex justify-content-start align-items-center"
+                >
+                  <div class="w-25">
+                    <b>Precio Venta</b>
+                  </div>
+                  <input
+                    id="editProductSell"
+                    type="text"
+                    class="ml-3 d-inline w-50"
+                  />
+                </div>
+
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="cancelBtn w-25"
+                    data-dismiss="modal"
+                  >
+                    Salir
+                  </button>
+                  <button
+                    type="button"
+                    id="btnEditProduct"
                     class="customBtn w-25"
                   >
                     Guardar
@@ -253,5 +347,5 @@
     integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
     crossorigin="anonymous"
   ></script>
-  <script src="../public/js/tickets/indexBundle.js"></script>
+  <script src="../public/js/inventory/indexBundle.js"></script>
 </html>
