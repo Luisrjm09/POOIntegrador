@@ -45,10 +45,10 @@
         <div class="menu" id="menu"></div>
 
         <button
-          id="btnEditService"
+          id="btnModalEditClient"
           class="d-none"
           data-toggle="modal"
-          data-target="#modalEditService"
+          data-target="#modalEditClient"
         ></button>
 
         <div class="bodyContent management">
@@ -64,9 +64,9 @@
             <thead>
               <tr class="text-center">
                 <th>#</th>
-                <th>Nombre</th>
                 <th>Telefono/Whatsapp</th>
                 <th>Conoce por</th>
+                <th>Nombre</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -150,26 +150,28 @@
                     <i class="fas fa-phone-alt d-inline-block"></i>
                   </div>
                   <input
-                    id="addLastname2"
+                    id="addClientPhone"
                     type="number"
                     class="d-inline w-50"
                     placeholder="Ingresar numero/whatsapp"
                   />
                 </div>
 
-                <div class="d-flex align-items-center justify-content-center">
-                  <input type="radio" name="recommendation" id="fb" value="0">
-                  <label class="mb-0 ml-2"  for="fb">Facebook</label>
-                </div>
-
-                <div class="d-flex align-items-center justify-content-center">
-                  <input type="radio" name="recommendation" id="whatsapp" value="1">
-                  <label class="mb-0 ml-2"  for="whatsapp">Whatsapp</label>
-                </div>
-
-                <div class="d-flex align-items-center justify-content-center mb-3">
-                  <input type="radio" name="recommendation" id="recommendation" value="2">
-                  <label class="mb-0 ml-2"  for="recommendation">Recomendacion</label>
+                <div class="addRecommendation">
+                  <div class="d-flex align-items-center justify-content-center">
+                    <input type="radio" name="recommendation" id="fb" value="1">
+                    <label class="mb-0 ml-2"  for="fb">Facebook</label>
+                  </div>
+  
+                  <div class="d-flex align-items-center justify-content-center">
+                    <input type="radio" name="recommendation" id="whatsapp" value="2">
+                    <label class="mb-0 ml-2"  for="whatsapp">Whatsapp</label>
+                  </div>
+  
+                  <div class="d-flex align-items-center justify-content-center mb-3">
+                    <input type="radio" name="recommendation" id="recommendation" value="3">
+                    <label class="mb-0 ml-2"  for="recommendation">Recomendacion</label>
+                  </div>
                 </div>
 
                 <div class="modal-footer">
@@ -182,7 +184,7 @@
                   </button>
                   <button
                     type="button"
-                    id="btnAddService"
+                    id="btnAddClient"
                     class="customBtn w-25"
                   >
                     Guardar
@@ -195,41 +197,83 @@
 
         <div
           class="modal fade"
-          id="modalEditService"
+          id="modalEditClient"
           tabindex="-1"
-          aria-labelledby="modalEditService"
+          aria-labelledby="modalEditClient"
           aria-hidden="true"
         >
           <div class="modal-dialog">
             <div class="modal-content">
               <form id="formEditService">
-                <p class="headerModal">Editar servicio</p>
-                <input type="hidden" id="idService" />
+                <p class="headerModal">Editar cliente</p>
+                <input type="hidden" id="idClient" />
                 <div
-                  class="mt-5 d-flex justify-content-center align-items-center"
+                  class="mt-2 d-flex justify-content-center align-items-center"
                 >
                   <div class="modalIcon">
-                    <i class="fas fa-wrench d-inline-block"></i>
+                    <i class="fas fa-user d-inline-block"></i>
                   </div>
                   <input
-                    id="serviceNameEdit"
+                    id="editFirstName"
                     type="text"
                     class="d-inline w-50"
-                    placeholder="Ingresar nombre servicio"
+                    placeholder="Ingresar primer nombre"
                   />
                 </div>
 
                 <div
-                  class="mt-2 mb-5 d-flex justify-content-center align-items-center"
+                  class="mt-2 d-flex justify-content-center align-items-center"
                 >
                   <div class="modalIcon">
-                    <i class="fas fa-comment-alt d-inline-block"></i>
+                    <i class="fas fa-user d-inline-block"></i>
                   </div>
                   <input
-                    id="serviceDescriptionEdit"
+                    id="editMiddlename"
                     type="text"
                     class="d-inline w-50"
-                    placeholder="Ingresar descripcion"
+                    placeholder="Ingresar segundo nombre"
+                  />
+                </div>
+
+                <div
+                  class="mt-2 d-flex justify-content-center align-items-center"
+                >
+                  <div class="modalIcon">
+                    <i class="fas fa-user d-inline-block"></i>
+                  </div>
+                  <input
+                    id="editLastname1"
+                    type="text"
+                    class="d-inline w-50"
+                    placeholder="Ingresar apellido paterno"
+                  />
+                </div>
+
+                <div
+                  class="mt-2 d-flex justify-content-center align-items-center"
+                >
+                  <div class="modalIcon">
+                    <i class="fas fa-user d-inline-block"></i>
+                  </div>
+                  <input
+                    id="editLastname2"
+                    type="text"
+                    class="d-inline w-50"
+                    placeholder="Ingresar apellido materno"
+                  />
+                </div>
+
+                <div
+                  class="mt-2 d-flex justify-content-center align-items-center"
+                >
+                  <div class="modalIcon">
+                    <i class="fas fa-phone-alt d-inline-block"></i>
+                  </div>
+                  <input
+                    id="editClientPhone"
+                    type="number"
+                    class="d-inline w-50"
+                    placeholder="Ingresar numero/whatsapp"
                   />
                 </div>
 
@@ -243,7 +287,7 @@
                   </button>
                   <button
                     type="button"
-                    id="btnUpdateService"
+                    id="editUpdateClient"
                     class="customBtn w-25"
                   >
                     Actualizar
