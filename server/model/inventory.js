@@ -110,14 +110,13 @@ class Inventory{
         
         console.log(`■ Updating ${idProduct}...`)
         
-        db.query(`UPDATE inventario SET 
-        descripcion = ?,
+        db.query(`UPDATE inventario SET descripcion = ?,
         stock = ?,
         categoria = ?,
         precioCompra = ?,
         precioVenta = ? 
         WHERE codigo = ?
-        `, [description,category,stock,price,sell,idProduct], (error,result,columns)=>{
+        `, [description,stock,category,price,sell,idProduct], (error,result,columns)=>{
             if(error){
                 console.log(error);
                 return response.json({

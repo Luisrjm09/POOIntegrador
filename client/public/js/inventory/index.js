@@ -48,6 +48,12 @@ class Inventory{
             });
 
             console.log(data);
+            if(data.status===200){
+                Alert.querySuccess(data.message);
+                return;
+            }
+
+            Alert.queryError(data.message);
         } catch (error) {
             console.log(error);
         }
@@ -92,7 +98,8 @@ class Inventory{
         const stock = document.getElementById('editProductStock').value;
         const price = document.getElementById('editProductPrice').value;
         const sell = document.getElementById('editProductSell').value;
-        
+        const idProduct = document.getElementById('editProductCode').value;
+                
         try {
             const { data } = await axios.post(`${URL_API}inventario/editar/producto`,{
                 description,
@@ -104,6 +111,13 @@ class Inventory{
             });
 
             console.log(data);
+
+            if(data.status===200){
+                Alert.querySuccess(data.message);
+                return;
+            }
+
+            Alert.queryError(data.error);
         } catch (error) {
            console.log(error); 
         }

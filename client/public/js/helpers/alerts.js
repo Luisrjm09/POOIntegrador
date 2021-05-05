@@ -11,6 +11,21 @@ class Alerts {
             }
         })
     }
+    querySuccess(message){
+        sa2.fire({
+            title:message,
+            icon:'success'
+        }).then(result=>{
+            {result.isConfirmed ? window.location.reload(true) : null;}
+        })
+    }
+
+    queryError(message){
+        sa2.fire({
+            title:message,
+            icon:'error'
+        });
+    }
 }
 
 const Alert = new Alerts();
