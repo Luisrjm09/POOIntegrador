@@ -61,12 +61,6 @@
 
             <div class="row">
                 <div class="col-6">Informacion del cliente</div>
-                <div class="col-6">
-                    <b>
-                        Folio
-                    </b>: <span id="noFolio">8848</span>
-                    
-                </div>
             </div>
 
             <hr>
@@ -131,6 +125,12 @@
                     >
                         Agregar cliente frecuente
                     </button>
+
+                    <select name="repairState" class="w-75" id="repairState">
+                      <option value="" selected="true" disabled>Estado de reparacion</option>
+                      <option value="0">Reparado</option>
+                      <option value="1">No reparado</option>
+                    </select>
                 </div>
             </div>
 
@@ -176,26 +176,28 @@
                 <div class="ml-5 mt-4">
                   <b class="text-center">Estado del equipo</b>
                   <hr>
-                  <div id="stateEquipment">
+                  <div id="stateEquipment" class="row">
                     <div class="w-50 d-flex align-items-center">
                       <input class="d-inline" type="checkbox">
                       <label class="d-inline mb-0 ml-2" for="">Apagado</label>
                     </div>
 
                     <div class="w-50 d-flex align-items-center">
-                      <input class="d-inline" type="checkbox">
-                      <label class="d-inline mb-0 ml-2" for="">Chip</label>
+                      <input class="d-inline" type="checkbox" id="chip">
+                      <label class="d-inline mb-0 ml-2" for="chip">Chip</label>
                     </div>
 
                     <div class="w-50 d-flex align-items-center">
-                      <input class="d-inline" type="checkbox">
-                      <label class="d-inline mb-0 ml-2" for="">Sim</label>
+                      <input class="d-inline" type="checkbox" id="on">
+                      <label class="d-inline mb-0 ml-2" for="on">Encendido</label>
                     </div>
 
                     <div class="w-50 d-flex align-items-center">
-                      <input class="d-inline" type="checkbox">
-                      <label class="d-inline mb-0 ml-2" for="">Encendido</label>
+                      <input class="d-inline" type="checkbox" id="sim">
+                      <label class="d-inline mb-0 ml-2" for="sim">Sim</label>
                     </div>
+
+                    
 
 
                   </div>
@@ -203,10 +205,46 @@
               </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-5">
               <div class="col-12">
                 <label class="font-weight-bold" for="">Descripcion/Observaciones</label>
                 <textarea class="w-100" name="" id="" cols="30" rows="10"></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12" id="payMethod">
+                <div class="d-flex align-items-center justify-content-center">
+                  <b class="mr-5">Pago</b>
+
+                  <input type="radio" name="payMethod" id="cash">
+                  <label for="cash" class="mb-0 ml-2">Efectivo</label>
+
+                  <input type="radio" class="ml-4" name="payMethod" id="creditCard">
+                  <label for="creditCard" class="mb-0 ml-2">Tarjeta</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <label for="" class="font-weight-bold">Cotizacion</label>
+                <input class="ml-2 w-60" type="number" step=0.1>
+              </div>
+
+              <div class="col-4">
+                <label for="" class="font-weight-bold">Total</label>
+                <input class="ml-2 w-80" type="number" step=0.1>
+              </div>
+
+              <div class="col-4">
+                <button
+                    type="button"
+                    id="btnSaveTicket"
+                    class="customBtn w-80"
+                  >
+                    Guardar
+                  </button>
               </div>
             </div>
 

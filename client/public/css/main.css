@@ -14,8 +14,9 @@
   background: #fff url("/client/public/media/bg-ste.png") no-repeat left;
   background-size: 25%;
   background-position-x: 90px;
+  background-attachment: fixed;
   height: 100vh;
-  width: 100vH;
+  width: 100vh;
 }
 
 svg {
@@ -65,7 +66,7 @@ svg {
 }
 
 .menu {
-  position: relative;
+  position: fixed;
   z-index: 100;
   margin: 0 0;
   display: flex;
@@ -109,6 +110,7 @@ svg {
   display: flex;
   align-items: center;
   margin: 0 0.5em 0 0;
+  background: #ffffff;
 }
 
 .headerModal {
@@ -118,11 +120,18 @@ svg {
   padding: 0.625em 0px;
 }
 
-input, select {
+input, select, textarea {
   border-radius: 0.1875em;
   border: 0.0625em solid #000;
-  height: 3.125em;
   padding: 0 0 0 1em;
+}
+
+input, select {
+  height: 3.125em;
+}
+
+textarea {
+  height: 8em;
 }
 
 .fa-trash-alt {
@@ -9842,6 +9851,14 @@ a.text-dark:hover, a.text-dark:focus {
 
 .w-80 {
   width: 80%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.w-60 {
+  width: 60%;
 }
 
 .h-100vh {

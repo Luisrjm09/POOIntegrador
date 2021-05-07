@@ -1,0 +1,18 @@
+.modalIcon {
+  border: 0.025em solid #000;
+  border-radius: 0.1875em;
+  padding: 0.3125em;
+  height: 3.125em;
+  display: flex;
+  align-items: center;
+  margin: 0 0.5em 0 0;
+  background: #ffffff;
+}
+
+.headerModal {
+  background: #182E46;
+  text-align: center;
+  color: #ffffff;
+  padding: 0.625em 0px;
+}
+/*# sourceMappingURL=services.css.map */
