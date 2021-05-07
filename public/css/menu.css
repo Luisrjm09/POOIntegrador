@@ -1,0 +1,31 @@
+.menu {
+  position: fixed;
+  z-index: 100;
+  margin: 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #182E46;
+  width: 10%;
+  color: #fff;
+  height: 100%;
+}
+
+.menu div {
+  cursor: pointer;
+  text-align: left;
+  margin: 0 0 0 0.4em;
+  font-size: 3.125em;
+}
+
+.rotate-l90 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+/*# sourceMappingURL=menu.css.map */
