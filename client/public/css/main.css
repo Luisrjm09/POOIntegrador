@@ -15,7 +15,7 @@
   background-size: 25%;
   background-position-x: 90px;
   height: 100vh;
-  width: 100vh;
+  width: 100vH;
 }
 
 svg {
@@ -9818,6 +9818,30 @@ a.text-dark:hover, a.text-dark:focus {
 
 .w-25 {
   width: 25%;
+}
+
+.w-15 {
+  width: 15 !important;
+}
+
+.newTicketName {
+  width: 16.5%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.w-80 {
+  width: 80%;
 }
 
 .h-100vh {
