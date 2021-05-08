@@ -88,7 +88,7 @@ try {
         const services = data.services;
         console.log(services);
         const Rows = new UI.Table(services);
-        Rows.createRow('bodyServices',['id','nombre','descripcion'],'id');
+        Rows.createRow('bodyServices',['idServicio','nombre','descripcion'],'id');
         Rows.addActions('bodyServices',['fas fa-trash-alt','fas fa-pen'],['deleteService','editService']);
 
         

@@ -24,7 +24,7 @@ class Services {
         let optionsDOM = `<option value="" disabled="" selected="true">-- SELECCIONA --</option>`;
 
         this.services.map(service=>{
-            optionsDOM+=`<option value="${service.id}">${service.nombre}</option>`;
+            optionsDOM+=`<option value="${service.idServicio}">${service.nombre}</option>`;
         });
 
         document.getElementById(selectParent).innerHTML = optionsDOM;
@@ -55,6 +55,8 @@ class Ticket extends HelperServices{
             const total = document.getElementById('total').value;
             const repairState = document.getElementById('repairState').value;
             const service = document.getElementById('servicesList').value;
+
+            console.log(service);
 
             const { data } = await axios.post(`${URL_API}ticket/agregar`,{
                 firstName,

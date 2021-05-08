@@ -43,9 +43,12 @@ class Tickets{
 
     async get(request,response,next){
 
-        console.log(`■ Fetching tickers...`);
+        console.log(`■ Fetching tickets...`);
 
-        await db.query(`SELECT * FROM ticket`,(error,result,columns)=>{
+        await db.query(`SELECT * FROM ticket 
+        INNER JOIN servicios ON
+        ticket.servicio = servicios.idServicio
+        `,(error,result,columns)=>{
             if(error){
                 console.log(error);
                 return response.json({
@@ -54,10 +57,35 @@ class Tickets{
                 });
             }
 
+            console.log(result);
+
             console.log(`■ Tickets fetched!`);
             request.body.tickets = result;
             next();
         })
+    }
+
+    async delete(request,response,next){
+        console.log(`Deleting ticket...`);
+
+        const {idTicket} = request.body;
+;
+        await db.query(`DELETE FROM ticket WHERE idTicket = ?`,idTicket,(error,result,column)=>{
+            if(error){
+                console.log(error);
+                return response.json({
+                    status:500,
+                    error
+                });
+            }
+
+            console.log(`Ticket deleted!`);
+
+            return response.json({
+                status:200,
+                message:`Ticket eliminado`
+            });
+        });
     }
 }
 

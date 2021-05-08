@@ -17,4 +17,8 @@ router.get('/',
     ControllerTickets.joinPayMethod
 );
 
+router.post('/borrar',
+    ModelTickets.delete
+);
+
 module.exports = router;

@@ -44,7 +44,8 @@ class Tickets{
         request.body.tickets.map((ticket,i)=>{
             request.body.tickets[i] = {
                 ...request.body.tickets[i],
-                payMethod: `${request.body.tickets[i].edioPagoId === 1 ? 'Efectivo' : 'Tarjeta'}`
+                payMethod: `${request.body.tickets[i].edioPagoId === 1 ? 'Efectivo' : 'Tarjeta'}`,
+                descriptionStatus: `${ request.body.tickets[i].estadoReparacion === 1 ? 'No reparado' : 'Reparado' }`
             }
         });
 

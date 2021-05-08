@@ -28,6 +28,7 @@ class Client{
         await db.query(`SELECT * FROM clientes 
         INNER JOIN contacto ON contacto.idContacto = clientes.recomendadoPor`,(error,result,column)=>{
             if(error){
+                console.log(error);
                 return response.json({
                     status:500,
                     error
