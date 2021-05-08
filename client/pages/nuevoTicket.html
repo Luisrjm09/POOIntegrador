@@ -74,28 +74,28 @@
                     <i class="fas fa-user d-inline-block"></i>
                   </div>
                   <input
-                    id="addMiddlename"
+                    id="ticketFirstName"
                     type="text"
                     class="d-inline newTicketName mr-3"
                     placeholder="1er nombre"
                   />
 
                   <input
-                    id="addMiddlename"
+                    id="ticketMiddlename"
                     type="text"
                     class="d-inline newTicketName mr-3"
                     placeholder="2do nombre"
                   />
 
                   <input
-                    id="addMiddlename"
+                    id="ticketLastname1"
                     type="text"
                     class="d-inline newTicketName mr-3"
                     placeholder="Paterno"
                   />
 
                   <input
-                    id="addMiddlename"
+                    id="ticketLastname2"
                     type="text"
                     class="d-inline newTicketName"
                     placeholder="Materno"
@@ -109,7 +109,7 @@
                   <i class="fas fa-phone-alt d-inline-block"></i>
                 </div>
                   <input
-                    id="addMiddlename"
+                    id="ticketPhone"
                     type="text"
                     class="d-inline w-75"
                     placeholder="Ingresar numero/whatsapp"
@@ -146,23 +146,22 @@
               <div class="col-6">
                 <div class="d-flex align-items-center justify-content-end">
                   <label for="" class="font-weight-bold">Fecha de recepcion</label>
-                  <input type="date" class="ml-3 w-40">
+                  <input type="date" class="ml-3 w-40" id="receptionDate">
                 </div>
 
                 <div class="d-flex justify-content-end align-items-center mt-3">
                   <label class="w-20 font-weight-bold" for="">Marca</label>
-                  <input class="w-80 ml-3" type="text">
+                  <input class="w-80 ml-3" type="text" id="fabricant">
                 </div>
 
                 <div class="d-flex justify-content-end align-items-center mt-3">
                   <label for="" class="w-20 font-weight-bold">Modelo</label>
-                  <input class="w-80 ml-3" type="text">
+                  <input class="w-80 ml-3" type="text" id="model">
                 </div>
 
                 <div class="d-flex justify-content-end align-items-center mt-3">
                   <label class="w-20 font-weight-bold" for="">Servicio</label>
-                  <select class="w-80 ml-3" name="" id="">
-                    <option value="" disabled selected="true">-- SELECCIONA --</option>
+                  <select class="w-80 ml-3" name="" id="servicesList">
                   </select>
                 </div>
               </div>
@@ -170,7 +169,7 @@
               <div class="col-6">
                 <div class="d-flex align-items-center justify-content-center">
                   <label for="" class="font-weight-bold">Fecha de entrega</label>
-                <input type="date" class="ml-3 w-40">
+                <input type="date" class="ml-3 w-40" id="deliveryDate">
                 </div>
                 
                 <div class="ml-5 mt-4">
@@ -208,7 +207,7 @@
             <div class="row mt-5">
               <div class="col-12">
                 <label class="font-weight-bold" for="">Descripcion/Observaciones</label>
-                <textarea class="w-100" name="" id="" cols="30" rows="10"></textarea>
+                <textarea class="w-100" name="" id="description" cols="30" rows="10"></textarea>
               </div>
             </div>
 
@@ -217,24 +216,24 @@
                 <div class="d-flex align-items-center justify-content-center">
                   <b class="mr-5">Pago</b>
 
-                  <input type="radio" name="payMethod" id="cash">
+                  <input type="radio" value="0" name="payMethod" id="cash">
                   <label for="cash" class="mb-0 ml-2">Efectivo</label>
 
-                  <input type="radio" class="ml-4" name="payMethod" id="creditCard">
+                  <input type="radio" value="1" class="ml-4" name="payMethod" id="creditCard">
                   <label for="creditCard" class="mb-0 ml-2">Tarjeta</label>
                 </div>
               </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-5">
               <div class="col-4">
                 <label for="" class="font-weight-bold">Cotizacion</label>
-                <input class="ml-2 w-60" type="number" step=0.1>
+                <input class="ml-2 w-60" type="number" step=0.1 id="price">
               </div>
 
               <div class="col-4">
                 <label for="" class="font-weight-bold">Total</label>
-                <input class="ml-2 w-80" type="number" step=0.1>
+                <input class="ml-2 w-80" type="number" step=0.1 id="total">
               </div>
 
               <div class="col-4">

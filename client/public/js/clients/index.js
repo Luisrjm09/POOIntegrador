@@ -162,3 +162,5 @@ document.getElementById('btnAddClient').addEventListener('click',()=>UIClient.ad
 
 /* EDIT CLIENT */
 document.getElementById('editUpdateClient').addEventListener('click',()=>UIClient.saveEdition());
+
+module.exports = Client;
