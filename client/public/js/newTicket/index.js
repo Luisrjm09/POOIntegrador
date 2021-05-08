@@ -8,13 +8,13 @@ class Services {
 
     constructor(services){
         this.services = services;
+        this.paymentMethod = 0;
     }
 
     async get(){
         try {
             const { data } = await axios.get(`${URL_API}servicios`); 
             this.services = data.services;
-            console.log(this.services);
         } catch (error) {
             console.log(error);
         }
@@ -35,13 +35,17 @@ class Ticket extends HelperServices{
     constructor(ticket,equipmentState){
         super();
         this.ticket = ticket;
-        this.equipmentState = equipmentState;
+        this.equipmentState = [];
         this.paymentMethod = 0;
+        this.clients = [];
+        this.selectedClient;
+
     }
 
     async save(){
         try {
             this.payMethod();
+            this.statusEquipment();
             const firstName = document.getElementById('ticketFirstName').value;
             const ticketMiddlename = document.getElementById('ticketMiddlename').value;
             const ticketLastname1 = document.getElementById('ticketLastname1').value;
@@ -55,8 +59,7 @@ class Ticket extends HelperServices{
             const total = document.getElementById('total').value;
             const repairState = document.getElementById('repairState').value;
             const service = document.getElementById('servicesList').value;
-
-            console.log(service);
+            const idClientSelected = document.getElementById('idClientSelected').value;
 
             const { data } = await axios.post(`${URL_API}ticket/agregar`,{
                 firstName,
@@ -72,18 +75,17 @@ class Ticket extends HelperServices{
                 total,
                 payMethod : this.paymentMethod,
                 repairState,
-                service
+                service,
+                idClientSelected,
+                equipmentState:this.equipmentState
             });
             
-            console.log(data);
-
             if(data.status===200){
                 Alert.querySuccess(data.message);
                 return;
             }
 
-
-            Alert.queryError(data.message);
+            Alert.queryError(data.error.sqlMessage);
             
 
         } catch (error) {
@@ -91,15 +93,106 @@ class Ticket extends HelperServices{
         }
     }
 
+    async addClient(){
+        const firstName = document.getElementById('addFirstName').value;
+        const middlename = document.getElementById('addMiddlename').value;
+        const lastName1 = document.getElementById('addLastname1').value; 
+        const lastName2 = document.getElementById('addLastname2').value; 
+        const clientPhone = document.getElementById('addClientPhone').value; 
+        let recommendation = 0;
+
+        document.querySelectorAll('.addRecommendation input').forEach(input=>{
+            {input.checked ? recommendation = input.value : null;}
+        });
+
+        try {
+            const { data } = await axios.post(`${URL_API}clientes/agregar`,{
+                firstName,
+                middlename,
+                lastName1,
+                lastName2,
+                clientPhone,
+                recommendation
+            });
+
+            if(data.status===200){
+                Alert.querySuccess(data.message);
+                return;
+            }
+
+            Alert.queryError(data.error);
+
+        } catch (error) {
+            console.log(error);    
+        }
+    }
+
+
+    printClients(){
+        let htmlOptions = `<option selected="true" disabled="">-- SELECCIONA CLIENTE -- (OPCIONAL)</option>`;
+
+        this.clients.map(client=>{
+            htmlOptions+=`<option value="${client.idCliente}" id="client-${client.idCliente}">${client.fullName}</option>`;
+        });
+
+        document.getElementById('listClients').innerHTML = htmlOptions;
+    }
+
+    setFieldsClient(e){
+        const clientId = parseInt(e.target.value,10);
+
+        this.selectedClient = this.clients.find(client=>client.idCliente === clientId);
+        
+        document.getElementById('ticketFirstName').value = this.selectedClient.primerNombre;
+        document.getElementById('ticketMiddlename').value = this.selectedClient.segundoNombre;
+        document.getElementById('ticketLastname1').value = this.selectedClient.apellidoPaterno;
+        document.getElementById('ticketLastname2').value = this.selectedClient.apellidoMaterno;
+        document.getElementById('ticketPhone').value = this.selectedClient.numero;
+        document.getElementById('idClientSelected').value = this.selectedClient.idCliente;
+        
+    }
+
     payMethod(){
         document.querySelectorAll('#payMethod input').forEach(input=>{
             {input.checked? this.paymentMethod = input.value : null;}
         });
     }
+
+    statusEquipment(){
+
+        let tempJSON;
+        let tempCheck;
+
+        document.querySelectorAll('#stateEquipment input').forEach(checkbox=>{
+
+            {checkbox.checked? tempCheck = 1 : tempCheck = 0}
+
+            tempJSON = {
+                "idTicketsEstado":null,
+                "idEstadoTicketNombre":checkbox.id,
+                "ticketCorresponde":0,
+                "estado":tempCheck
+            }
+            this.equipmentState.push(tempJSON);
+        });
+
+
+        console.log(this.equipmentState);
+    }
 }
 
+// const ClientUI = new Client();
 const TicketUI = new Ticket();
 const ServicesUI = new Services();
+
+//////////////////// [GET LIST OF CLIENTS] //////////////////////
+const clients = async() => {
+    const result = await TicketUI.getClients();
+    TicketUI.clients = result;
+    TicketUI.printClients();
+}
+
+clients();
 
 ///////////////////[GET LIST OF SERVICES] //////////////////////
 const services = async() => {
@@ -111,3 +204,8 @@ services();
 
 ///////////////// [SAVE TICKET] //////////////////////////////////
 document.getElementById('btnSaveTicket').addEventListener('click',()=>TicketUI.save());
+
+document.getElementById('btnAddClient').addEventListener('click',()=>TicketUI.addClient());
+
+////////////////// [SET INFO OF CLIENT ON FIELDS] //////////////////////
+document.getElementById('listClients').addEventListener('click',(e)=>{TicketUI.setFieldsClient(e)});

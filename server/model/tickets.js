@@ -8,7 +8,7 @@ class Tickets{
             ticketLastname2 , ticketPhone, payMethod, service,
             model , description , price , total, repairState,
             recolectionDay , recolectionMonth , recolectionYear,
-            deliveryDay , deliveryMonth, deliveryYear } = request.body;
+            deliveryDay , deliveryMonth, deliveryYear,idClientSelected } = request.body;
 
         await db.query(`INSERT INTO ticket values 
         (
@@ -22,7 +22,7 @@ class Tickets{
             null,recolectionDay,recolectionMonth,recolectionYear,
             deliveryDay,deliveryMonth,deliveryYear, model,
             description,service,price,1,
-            payMethod,total,1,repairState,
+            payMethod,total,idClientSelected,repairState,
             1, `${firstName} ${ticketMiddlename} ${ticketLastname1} ${ticketLastname2}`,ticketPhone
         ],(error,result,columns)=>{
             if(error){
@@ -32,13 +32,11 @@ class Tickets{
                     error
                 });
             }
-
+            request.body.ticketId = result.insertId;
             console.log(`Ticket saved!`);
-            return response.json({
-                status:200,
-                message:`Ticket creado`
-            });
+            next();
         });
+
     }
 
     async get(request,response,next){
@@ -72,7 +70,6 @@ class Tickets{
 ;
         await db.query(`DELETE FROM ticket WHERE idTicket = ?`,idTicket,(error,result,column)=>{
             if(error){
-                console.log(error);
                 return response.json({
                     status:500,
                     error
@@ -86,6 +83,31 @@ class Tickets{
                 message:`Ticket eliminado`
             });
         });
+    }
+
+    async saveStatesTicket(request,response,next){
+        
+        const { equipmentState,ticketId } = request.body;
+
+        await request.body.equipmentState.map(async(status)=>{
+            await db.query(`INSERT INTO ticketestados values
+            (?,?,?,?)
+            `,[null,status.idEstadoTicketNombre,ticketId,status.estado],
+            (error,result,columns)=>{
+                if(error){
+                    return response.json({
+                        status:500,
+                        error
+                    });
+                }
+            })
+        });
+
+        return response.json({
+            status:200,
+            message:`Ticket creado`
+        });
+        
     }
 }
 

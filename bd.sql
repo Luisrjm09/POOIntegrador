@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2021 a las 21:02:52
+-- Tiempo de generación: 09-05-2021 a las 01:07:07
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.1
 
@@ -51,7 +51,7 @@ CREATE TABLE `clientes` (
   `segundoNombre` varchar(15) DEFAULT NULL,
   `apellidoPaterno` varchar(15) NOT NULL,
   `apellidoMaterno` varchar(15) NOT NULL,
-  `numero` int(20) NOT NULL,
+  `numero` bigint(20) NOT NULL,
   `recomendadoPor` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -60,8 +60,9 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`idCliente`, `primerNombre`, `segundoNombre`, `apellidoPaterno`, `apellidoMaterno`, `numero`, `recomendadoPor`) VALUES
-(1, 'Jose ', 'Luis', 'Perez ', 'Olguin Editado', 2147483647, 1),
-(2, 'Adrian', '', 'Alardin', 'Iracheta', 244545646, 3);
+(1, 'Jose ', 'Luis', 'Perez ', 'Olguin', 8111932475, 1),
+(2, 'Adrian', '', 'Alardin', 'Iracheta', 8121966517, 3),
+(3, 'Miguel', 'Angel', 'Cazares', 'Caballero', 8164891501, 1);
 
 -- --------------------------------------------------------
 
@@ -243,7 +244,7 @@ CREATE TABLE `ticket` (
   `estadoReparacion` tinyint(1) NOT NULL COMMENT '[0-Reparado] [1-No Reparado]',
   `estadoEquipo` int(11) NOT NULL,
   `nombreCliente` varchar(50) DEFAULT NULL,
-  `numeroCliente` int(15) DEFAULT NULL
+  `numeroCliente` bigint(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -251,9 +252,8 @@ CREATE TABLE `ticket` (
 --
 
 INSERT INTO `ticket` (`idTicket`, `diaRecoleccion`, `mesRecoleccion`, `recolectionYear`, `diaEntrega`, `mesEntrega`, `entregaYear`, `modelo`, `descripcion`, `servicio`, `cotizacion`, `medioContactoId`, `medioPagoId`, `totalPago`, `clienteId`, `estadoReparacion`, `estadoEquipo`, `nombreCliente`, `numeroCliente`) VALUES
-(16, 3, 5, 2021, 10, 5, 2021, 'FX2', 'No se ve ', '1', 400, 1, 0, 600, 1, 1, 1, 'Maria Leal Perez Coronado', 10202),
-(17, 17, 5, 2021, 24, 5, 2021, '8', 'Se borra la memoria', '4', 15000, 1, 0, 16000, 1, 0, 1, 'Juan Mario De leal Sanchez', 2147483647),
-(18, 26, 5, 2021, 27, 5, 2021, 'asdasdasdas', 'asdasdasd', '4', 123, 1, 1, 123, 1, 1, 1, 'Adrian  Alardin Iracheta', 2147483647);
+(38, 8, 5, 2021, 15, 5, 2021, 'Galaxy', 'Pila inflada', '2', 349.99, 1, 0, 399.99, 2, 1, 1, 'Adrian  Alardin Iracheta', 8121966517),
+(39, 8, 5, 2021, 11, 5, 2021, 'S Mini', 'No agarra el sim', '4', 299.99, 1, 1, 399.99, 3, 0, 1, 'Miguel Angel Cazares Caballero', 8164891501);
 
 -- --------------------------------------------------------
 
@@ -264,8 +264,23 @@ INSERT INTO `ticket` (`idTicket`, `diaRecoleccion`, `mesRecoleccion`, `recolecti
 CREATE TABLE `ticketestados` (
   `idTicketsEstado` int(11) NOT NULL,
   `idEstadoTicketNombre` int(11) NOT NULL,
-  `ticketCorresponde` int(11) NOT NULL
+  `ticketCorresponde` int(11) NOT NULL,
+  `estado` tinyint(4) NOT NULL COMMENT '[1-Check]■[0-NotCheck]'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ticketestados`
+--
+
+INSERT INTO `ticketestados` (`idTicketsEstado`, `idEstadoTicketNombre`, `ticketCorresponde`, `estado`) VALUES
+(13, 1, 38, 1),
+(14, 2, 38, 1),
+(15, 3, 38, 0),
+(16, 4, 38, 1),
+(17, 1, 39, 0),
+(18, 2, 39, 1),
+(19, 3, 39, 1),
+(20, 4, 39, 1);
 
 -- --------------------------------------------------------
 
@@ -382,7 +397,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
@@ -442,13 +457,13 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `ticketestados`
 --
 ALTER TABLE `ticketestados`
-  MODIFY `idTicketsEstado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTicketsEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

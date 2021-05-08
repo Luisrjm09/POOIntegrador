@@ -67,7 +67,22 @@
 
             <div class="row">
                 <div class="col-8">
-                    <div
+                  
+                  <input type="d-none" value="0" hidden id="idClientSelected">
+
+                  <div class="d-flex justify-content-center"> 
+                    <select class="w-80 text-center"  name="" id="listClients">
+                      <option selected="true" disabled>-- SELECCIONA CLIENTE -- (OPCIONAL)</option>
+                      <option value="">1</option>
+                      <option value="">1</option>
+                      <option value="">1</option>
+                      <option value="">1</option>
+                    </select>
+                  </div>
+
+                
+                
+                <div
                   class="mt-2 d-flex justify-content-center align-items-center"
                 >
                   <div class="modalIcon">
@@ -177,27 +192,24 @@
                   <hr>
                   <div id="stateEquipment" class="row">
                     <div class="w-50 d-flex align-items-center">
-                      <input class="d-inline" type="checkbox">
-                      <label class="d-inline mb-0 ml-2" for="">Apagado</label>
+                      <input class="d-inline" type="checkbox" id="1">
+                      <label class="d-inline mb-0 ml-2" for="1">Apagado</label>
                     </div>
 
                     <div class="w-50 d-flex align-items-center">
-                      <input class="d-inline" type="checkbox" id="chip">
-                      <label class="d-inline mb-0 ml-2" for="chip">Chip</label>
+                      <input class="d-inline" type="checkbox" id="2">
+                      <label class="d-inline mb-0 ml-2" for="2">Chip</label>
                     </div>
 
                     <div class="w-50 d-flex align-items-center">
-                      <input class="d-inline" type="checkbox" id="on">
-                      <label class="d-inline mb-0 ml-2" for="on">Encendido</label>
+                      <input class="d-inline" type="checkbox" id="3">
+                      <label class="d-inline mb-0 ml-2" for="3">Encendido</label>
                     </div>
 
                     <div class="w-50 d-flex align-items-center">
-                      <input class="d-inline" type="checkbox" id="sim">
-                      <label class="d-inline mb-0 ml-2" for="sim">Sim</label>
+                      <input class="d-inline" type="checkbox" id="4">
+                      <label class="d-inline mb-0 ml-2" for="4">Sim</label>
                     </div>
-
-                    
-
 
                   </div>
                 </div>

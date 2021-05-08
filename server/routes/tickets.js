@@ -8,7 +8,8 @@ const ControllerTickets = require('../controller/tickets');
 router.post('/agregar',
     ControllerTickets.parseRecolectionDate,
     ControllerTickets.parseDeliveryDate,
-    ModelTickets.add
+    ModelTickets.add,
+    ModelTickets.saveStatesTicket
 );
 
 router.get('/',

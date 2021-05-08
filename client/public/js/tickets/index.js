@@ -34,6 +34,17 @@ class Ticket{
         }); 
     }
 
+    openModal(e,idBtnModal){
+        let idTicket = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('id');
+        idTicket = parseInt(idTicket,10);
+
+        this.selectedTicket = this.tickets.find(ticket=>ticket.idTicket === idTicket);
+
+        this.fillModalEdit();
+
+        document.getElementById(idBtnModal).click();
+    }
+
     openConfirmDelete(e){
         let idTicket = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('id');
         idTicket = parseInt(idTicket,10);
@@ -49,6 +60,15 @@ class Ticket{
                 this.delete(this.selectedTicket.idTicket);
             }
         })
+    }
+
+    fillModalEdit(){
+        document.getElementById('editFirstName').value = this.selectedClient.primerNombre;
+        document.getElementById('editMiddlename').value = this.selectedClient.segundoNombre;
+        document.getElementById('editLastname1').value = this.selectedClient.apellidoPaterno;
+        document.getElementById('editLastname2').value = this.selectedClient.apellidoMaterno;
+        document.getElementById('editClientPhone').value = this.selectedClient.numero; 
+        document.getElementById('idClient').value = this.selectedClient.idCliente;
     }
 
     async delete(idTicket){

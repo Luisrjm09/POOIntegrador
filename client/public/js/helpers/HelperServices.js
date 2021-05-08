@@ -5,6 +5,7 @@ class HelperServices{
 
     constructor(services){
         this.services = services;
+        this.clients = [];
     }
 
     async getServices(){
@@ -12,6 +13,17 @@ class HelperServices{
           const { data } = axios.get(`${URL_API}servicios`);
           this.services = data.services;
           
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async getClients(){
+        try {
+            const { data } = await axios.get(`${URL_API}clientes`);
+            this.clients = data.data;
+            return this.clients;
+
         } catch (error) {
             console.log(error);
         }
