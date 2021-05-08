@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2021 a las 04:52:18
+-- Tiempo de generación: 08-05-2021 a las 04:58:09
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.1
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `clientes` (
-  `id` int(11) NOT NULL,
+  `idCliente` int(11) NOT NULL,
   `primerNombre` varchar(15) NOT NULL,
   `segundoNombre` varchar(15) DEFAULT NULL,
   `apellidoPaterno` varchar(15) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `clientes` (
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `primerNombre`, `segundoNombre`, `apellidoPaterno`, `apellidoMaterno`, `numero`, `recomendadoPor`) VALUES
+INSERT INTO `clientes` (`idCliente`, `primerNombre`, `segundoNombre`, `apellidoPaterno`, `apellidoMaterno`, `numero`, `recomendadoPor`) VALUES
 (1, 'Jose ', 'Luis', 'Perez ', 'Olguin', 2147483647, 1),
 (2, 'Adrian', '', 'Alardin', 'Iracheta', 244545646, 3);
 
@@ -53,7 +53,7 @@ INSERT INTO `clientes` (`id`, `primerNombre`, `segundoNombre`, `apellidoPaterno`
 -- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idCliente`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -63,7 +63,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
