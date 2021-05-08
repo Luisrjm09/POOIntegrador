@@ -84,13 +84,14 @@
               <tr class="text-center">
                 <th>#</th>
                 <th>Servicio</th>
+                <th>Cotizacion</th>
+                <th>Total</th>
+                <th>Estado</th>
                 <th>Fecha de recepcion</th>
                 <th>Fecha de entrega</th>
                 <th>Pago</th>
-                <th>Cotizacion</th>
-                <th>Estado</th>
-                <th>Total</th>
                 <th>Acciones</th>
+
               </tr>
             </thead>
             <tbody id="bodyServices"></tbody>
@@ -228,66 +229,6 @@
           </div>
         </div>
 
-        <div
-          class="modal fade"
-          id="modalEditService"
-          tabindex="-1"
-          aria-labelledby="modalEditService"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <form id="formEditService">
-                <p class="headerModal">Editar servicio</p>
-                <input type="hidden" id="idService" />
-                <div
-                  class="mt-5 d-flex justify-content-center align-items-center"
-                >
-                  <div class="modalIcon">
-                    <i class="fas fa-wrench d-inline-block"></i>
-                  </div>
-                  <input
-                    id="serviceNameEdit"
-                    type="text"
-                    class="d-inline w-50"
-                    placeholder="Ingresar nombre servicio"
-                  />
-                </div>
-
-                <div
-                  class="mt-2 mb-5 d-flex justify-content-center align-items-center"
-                >
-                  <div class="modalIcon">
-                    <i class="fas fa-comment-alt d-inline-block"></i>
-                  </div>
-                  <input
-                    id="serviceDescriptionEdit"
-                    type="text"
-                    class="d-inline w-50"
-                    placeholder="Ingresar descripcion"
-                  />
-                </div>
-
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="cancelBtn w-25"
-                    data-dismiss="modal"
-                  >
-                    Salir
-                  </button>
-                  <button
-                    type="button"
-                    id="btnUpdateService"
-                    class="customBtn w-25"
-                  >
-                    Actualizar
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </body>

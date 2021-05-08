@@ -1,4 +1,5 @@
 const DateServer = require('../middlewares/date');
+const { monthName } = require('../helpers/date');
 
 class Tickets{
     
@@ -24,6 +25,33 @@ class Tickets{
         request.body.deliveryDay = day;
 
         next();
+    }
+
+    joinDates(request,response,next){
+        request.body.tickets.map((ticket,i)=>{
+            request.body.tickets[i] = {
+                ...request.body.tickets[i],
+                receptionDate:`${request.body.tickets[i].diaRecoleccion}-${monthName[request.body.tickets[i].mesRecoleccion]}-${request.body.tickets[i].recolectionYear}`,
+                deliveryDate:`${request.body.tickets[i].diaEntrega}-${monthName[request.body.tickets[i].mesEntrega]}-${request.body.tickets[i].entregaYear}`
+            }
+        });
+
+        next();
+    }
+
+    joinPayMethod(request,response,next){
+        
+        request.body.tickets.map((ticket,i)=>{
+            request.body.tickets[i] = {
+                ...request.body.tickets[i],
+                payMethod: `${request.body.tickets[i].edioPagoId === 1 ? 'Efectivo' : 'Tarjeta'}`
+            }
+        });
+
+        return response.json({
+            status:200,
+            tickets:request.body.tickets
+        });
     }
 }
 

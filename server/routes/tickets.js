@@ -11,4 +11,10 @@ router.post('/agregar',
     ModelTickets.add
 );
 
+router.get('/',
+    ModelTickets.get,
+    ControllerTickets.joinDates,
+    ControllerTickets.joinPayMethod
+);
+
 module.exports = router;
