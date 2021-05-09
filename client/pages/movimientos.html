@@ -57,7 +57,7 @@
           <button
             class="customBtn w-25 mb-4"
             data-toggle="modal"
-            data-target="#newTicket"
+            data-target="#modalNewMove"
           >
             Nuevo movimiento
           </button>
@@ -76,114 +76,66 @@
           </table>
         </div>
 
-        <!-- Modal agregar -->
+        <!-- Modal movimiento -->
         <div
           class="modal fade"
-          id="addClient"
+          id="modalNewMove"
           tabindex="-1"
-          aria-labelledby="addClient"
+          aria-labelledby="modalNewMove"
           aria-hidden="true"
         >
           <div class="modal-dialog">
             <div class="modal-content">
-              <form id="formServices">
-                <p class="headerModal">Agregar cliente</p>
+              <form id="formMoves">
+                <p class="headerModal">Agregar movimiento</p>
 
                 <div
                   class="mt-2 d-flex justify-content-center align-items-center"
                 >
-                  <div class="modalIcon">
-                    <i class="fas fa-user d-inline-block"></i>
-                  </div>
+                  <label class="text-right mr-2 w-25" for="quantity">Cantidad</label>
                   <input
-                    id="addFirstName"
-                    type="text"
-                    class="d-inline w-50"
-                    placeholder="Ingresar primer nombre"
-                  />
-                </div>
-
-                <div
-                  class="mt-2 d-flex justify-content-center align-items-center"
-                >
-                  <div class="modalIcon">
-                    <i class="fas fa-user d-inline-block"></i>
-                  </div>
-                  <input
-                    id="addMiddlename"
-                    type="text"
-                    class="d-inline w-50"
-                    placeholder="Ingresar segundo nombre"
-                  />
-                </div>
-
-                <div
-                  class="mt-2 d-flex justify-content-center align-items-center"
-                >
-                  <div class="modalIcon">
-                    <i class="fas fa-user d-inline-block"></i>
-                  </div>
-                  <input
-                    id="addLastname1"
-                    type="text"
-                    class="d-inline w-50"
-                    placeholder="Ingresar apellido paterno"
-                  />
-                </div>
-
-                <div
-                  class="mt-2 d-flex justify-content-center align-items-center"
-                >
-                  <div class="modalIcon">
-                    <i class="fas fa-user d-inline-block"></i>
-                  </div>
-                  <input
-                    id="addLastname2"
-                    type="text"
-                    class="d-inline w-50"
-                    placeholder="Ingresar apellido materno"
-                  />
-                </div>
-
-                <div
-                  class="mt-2 d-flex justify-content-center align-items-center"
-                >
-                  <div class="modalIcon">
-                    <i class="fas fa-phone-alt d-inline-block"></i>
-                  </div>
-                  <input
-                    id="addLastname2"
+                    id="quantity"
                     type="number"
-                    class="d-inline w-50"
-                    placeholder="Ingresar numero/whatsapp"
+                    step="0.01"
+                    class="d-inline w-60"
+                    required
                   />
-                </div>
-
-                <div class="d-flex align-items-center justify-content-center">
-                  <input type="radio" name="recommendation" id="fb" value="0" />
-                  <label class="mb-0 ml-2" for="fb">Facebook</label>
-                </div>
-
-                <div class="d-flex align-items-center justify-content-center">
-                  <input
-                    type="radio"
-                    name="recommendation"
-                    id="whatsapp"
-                    value="1"
-                  />
-                  <label class="mb-0 ml-2" for="whatsapp">Whatsapp</label>
                 </div>
 
                 <div
-                  class="d-flex align-items-center justify-content-center mb-3"
+                  class="mt-2 d-flex justify-content-center align-items-center"
                 >
+                  <label class="text-right mr-2 w-25" for="quantity">Tipo</label>
+                  <select name="" id="typeMove" class="w-60" required>
+                    <option selected="true" disabled></option>
+                    <option value="1">Egreso</option>
+                    <option value="0">Ingreso</option>
+                  </select>
+                  
+                </div>
+
+                <div
+                  class="mt-2 d-flex justify-content-center align-items-center"
+                >
+                  <label class="text-right mr-2 w-25" for="date">Fecha</label>
                   <input
-                    type="radio"
-                    name="recommendation"
-                    id="recommendation"
-                    value="2"
+                    id="date"
+                    type="date"
+                    class="d-inline w-60"
+                    required
                   />
-                  <label class="mb-0 ml-2" for="recommendation">Whatsapp</label>
+                </div>
+
+                <div
+                  class="mt-2 d-flex justify-content-center align-items-center"
+                >
+                  <label class="text-right mr-2 w-25" for="total">Concepto</label>
+                  <input
+                    id="concept"
+                    type="text"
+                    class="d-inline w-60"
+                    required
+                  />
                 </div>
 
                 <div class="modal-footer">
@@ -194,13 +146,12 @@
                   >
                     Salir
                   </button>
-                  <button
-                    type="button"
-                    id="btnAddService"
+                  <input
+                    value = "Guardar"
+                    type="submit"
+                    id="btnSaveMove"
                     class="customBtn w-25"
-                  >
-                    Guardar
-                  </button>
+                  />
                 </div>
               </form>
             </div>
@@ -285,5 +236,5 @@
   integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
   crossorigin="anonymous"
 ></script>
-<script src="../public/js/inventory/indexBundle.js"></script>
+<script src="../public/js/moves/indexBundle.js"></script>
 </html>
