@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2021 a las 01:07:07
+-- Tiempo de generación: 09-05-2021 a las 20:54:59
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.1
 
@@ -91,13 +91,20 @@ INSERT INTO `contacto` (`idContacto`, `nombre`) VALUES
 --
 
 CREATE TABLE `dinero` (
-  `id` int(11) NOT NULL,
-  `montoInicial` int(10) NOT NULL,
-  `montoFinal` int(10) NOT NULL,
+  `idEstadoCaja` int(11) NOT NULL,
+  `montoInicial` float NOT NULL,
+  `montoFinal` float NOT NULL,
   `dia` int(2) NOT NULL,
   `mes` int(2) NOT NULL,
   `yearTime` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `dinero`
+--
+
+INSERT INTO `dinero` (`idEstadoCaja`, `montoInicial`, `montoFinal`, `dia`, `mes`, `yearTime`) VALUES
+(1, 999.99, 999.99, 9, 5, 2021);
 
 -- --------------------------------------------------------
 
@@ -189,12 +196,25 @@ INSERT INTO `inventario` (`codigo`, `nombre`, `descripcion`, `stock`, `categoria
 --
 
 CREATE TABLE `movimientos` (
-  `id` int(11) NOT NULL,
+  `idMovimiento` int(11) NOT NULL,
   `nombre` varchar(20) NOT NULL,
-  `tipo` tinyint(4) NOT NULL,
-  `precio` int(10) NOT NULL,
-  `idCorte` int(11) NOT NULL
+  `tipo` tinyint(1) NOT NULL COMMENT '[1-Egreso]■[0-Ingreso]',
+  `precio` float NOT NULL,
+  `idCorte` int(11) DEFAULT NULL,
+  `diaMovimiento` int(2) NOT NULL,
+  `mesMovimiento` int(2) NOT NULL,
+  `yearMovimiento` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `movimientos`
+--
+
+INSERT INTO `movimientos` (`idMovimiento`, `nombre`, `tipo`, `precio`, `idCorte`, `diaMovimiento`, `mesMovimiento`, `yearMovimiento`) VALUES
+(1, 'Luz', 1, 399.99, 0, 9, 5, 2021),
+(2, 'Internet', 1, 299.99, 0, 9, 5, 2021),
+(3, 'Ventana rota', 1, 949.99, 0, 7, 5, 2021),
+(4, 'Devolucion celular', 0, 999.99, 0, 6, 5, 2021);
 
 -- --------------------------------------------------------
 
@@ -320,7 +340,7 @@ ALTER TABLE `contacto`
 -- Indices de la tabla `dinero`
 --
 ALTER TABLE `dinero`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idEstadoCaja`);
 
 --
 -- Indices de la tabla `estados`
@@ -357,7 +377,7 @@ ALTER TABLE `inventario`
 -- Indices de la tabla `movimientos`
 --
 ALTER TABLE `movimientos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idMovimiento`);
 
 --
 -- Indices de la tabla `servicios`
@@ -409,7 +429,7 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `dinero`
 --
 ALTER TABLE `dinero`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEstadoCaja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -445,7 +465,7 @@ ALTER TABLE `inventario`
 -- AUTO_INCREMENT de la tabla `movimientos`
 --
 ALTER TABLE `movimientos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idMovimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
