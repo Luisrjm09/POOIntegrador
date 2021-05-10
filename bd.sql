@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2021 a las 20:54:59
+-- Tiempo de generación: 10-05-2021 a las 03:04:31
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.1
 
@@ -104,7 +104,7 @@ CREATE TABLE `dinero` (
 --
 
 INSERT INTO `dinero` (`idEstadoCaja`, `montoInicial`, `montoFinal`, `dia`, `mes`, `yearTime`) VALUES
-(1, 999.99, 999.99, 9, 5, 2021);
+(1, 999.99, 0, 9, 5, 2021);
 
 -- --------------------------------------------------------
 
@@ -211,10 +211,11 @@ CREATE TABLE `movimientos` (
 --
 
 INSERT INTO `movimientos` (`idMovimiento`, `nombre`, `tipo`, `precio`, `idCorte`, `diaMovimiento`, `mesMovimiento`, `yearMovimiento`) VALUES
-(1, 'Luz', 1, 399.99, 0, 9, 5, 2021),
-(2, 'Internet', 1, 299.99, 0, 9, 5, 2021),
-(3, 'Ventana rota', 1, 949.99, 0, 7, 5, 2021),
-(4, 'Devolucion celular', 0, 999.99, 0, 6, 5, 2021);
+(1, 'Luz', 1, 399.99, 1, 9, 5, 2021),
+(2, 'Internet', 1, 299.99, 1, 9, 5, 2021),
+(3, 'Ventana rota', 1, 949.99, 1, 9, 5, 2021),
+(4, 'Devolucion celular', 0, 999.99, 1, 9, 5, 2021),
+(5, 'Un billete tirado', 0, 100, 0, 9, 5, 2021);
 
 -- --------------------------------------------------------
 
@@ -429,7 +430,7 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `dinero`
 --
 ALTER TABLE `dinero`
-  MODIFY `idEstadoCaja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idEstadoCaja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -465,7 +466,7 @@ ALTER TABLE `inventario`
 -- AUTO_INCREMENT de la tabla `movimientos`
 --
 ALTER TABLE `movimientos`
-  MODIFY `idMovimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idMovimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
