@@ -21,7 +21,12 @@ function getActualDate(){
 
     return {
         stringDate:`${day}-${months[month]}-${year}`,
-        dateJS:today
+        dateJS:today,
+        numberDate:{
+            day,
+            month,
+            year
+        }
     }
 }
 

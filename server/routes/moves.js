@@ -13,4 +13,10 @@ router.get('/',
     ControllerMoves.parseMoves
 );
 
+router.get('/:day/:month/:year',
+    ModelMoves.getCashRegister,
+    ModelMoves.createCashRegister,
+    ModelMoves.getMovesDay
+);
+
 module.exports = router;
