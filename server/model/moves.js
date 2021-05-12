@@ -84,9 +84,38 @@ class Moves {
 
                 return response.json({
                     status: 200,
-                    moves: result
+                    moves: result,
+                    cashRegisterDay:request.body.cashRegister
                 });
             })
+    }
+
+    async updateNewCashRegister(request,response,next){
+
+        if(request.body.createCashRegister===true){
+
+            console.log(`■ Inserting new cash register of the day...`);
+
+            await db.query(`INSERT INTO dinero values (?,?,?,?,?,?)`,
+            [null,request.body.updatedCashRegister,0,request.params.day,request.params.month,request.params.year],
+            (error,result,response)=>{
+                if(error){
+                    console.log(error);
+                    return response.json({
+                        status:500,
+                        error
+                    });
+                }
+
+                console.log(result);
+
+                request.body.cashRegister = result;
+                next();
+
+            })
+        }else{
+            next();
+        }
     }
 
     async getCashRegister(request, response, next) {
@@ -118,7 +147,7 @@ class Moves {
 
                 // ALL OK, CONTINUE
                 request.body.cashRegister = result;
-                
+                console.log(result);                
 
                 next();
             });

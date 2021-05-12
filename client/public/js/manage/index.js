@@ -8,12 +8,14 @@ const today = getActualDate();
 async function initialLoad(){
     await ManageUI.getMoves();
     
-    const [income,expenses] = ManageUI.calculateMoney();
+    let [income,expenses,cashRegister] = ManageUI.calculateMoney();
     
     ManageUI.printManage(formatMoney.format(income),'income');
     ManageUI.printManage(formatMoney.format(expenses),'expenses');
+
+    console.log(income,expenses);
     
-    const cashRegister = income - expenses;
+    cashRegister = (income - expenses)+cashRegister;
     ManageUI.printManage(formatMoney.format(cashRegister),'cashRegister');
 }
 

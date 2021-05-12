@@ -18,6 +18,7 @@ router.get('/:day/:month/:year',
     ModelMoves.getLastCashRegister,
     ModelMoves.getMovesCashRegister,
     ControllerMoves.calculateUpdatedCashRegister,
+    ModelMoves.updateNewCashRegister,
     ModelMoves.getMovesDay
 );
 

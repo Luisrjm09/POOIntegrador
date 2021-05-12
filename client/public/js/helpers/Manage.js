@@ -19,6 +19,8 @@ class Manage{
 
             const { data } = await axios.get(`${URL_API}movimientos/${today.numberDate.day}/${(today.numberDate.month)+1}/${today.numberDate.year}`);
 
+            this.cashRegister = data.cashRegisterDay[0].montoInicial;
+
             if(data.status===200){
                 this.moves = data.moves;
                 return;
@@ -43,7 +45,7 @@ class Manage{
         this.income = income;
         this.expenses = expenses
 
-        return [income,expenses];
+        return [income,expenses,this.cashRegister];
     }
 
     printManage(money,id){
