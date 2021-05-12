@@ -17,6 +17,29 @@ class Moves{
             moves:request.body.moves
         });
     }
+
+    calculateUpdatedCashRegister(request,response,next){
+
+        let newCashRegister = 0;
+
+        if (request.body.createCashRegister === true) {
+            console.log('--- Calculating last cash register total...');
+            if (request.body.createCashRegister === true) {
+                request.body.movesCalculation.map(move=>{
+                    {move.tipo===1 ? newCashRegister-=move.precio : newCashRegister+=move.precio}
+                });
+
+                newCashRegister+=request.body.lastCashRegisterUpdate.montoInicial;
+                console.log('New total cash register:',newCashRegister);
+
+                request.body.updatedCashRegister = newCashRegister;
+                next();
+            }
+        }else{
+            next();
+
+        }
+    }
 }
 
 const ControllerMoves = new Moves();

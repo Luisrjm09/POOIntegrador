@@ -1,8 +1,14 @@
 const express = require('express');
 const db = require('../config');
 const DateServer = require('../middlewares/date');
+const ControllerMoves = require('../controller/move');
 
 class Moves {
+
+    constructor(){
+        this.idCashRegister = 0;
+    }
+
     async add(request, response, next) {
         console.log(`■ Trying to save move...`);
 
@@ -105,8 +111,6 @@ class Moves {
                     })
                 }
 
-                console.log(result);
-
                 // CASH DOESN'T EXIST, CREATE DATA
                 if (result.length === 0) {
                     request.body.createCashRegister = true;
@@ -114,18 +118,19 @@ class Moves {
 
                 // ALL OK, CONTINUE
                 request.body.cashRegister = result;
-                next();
+                
 
+                next();
             });
+
 
     }
 
-    async createCashRegister(request, response, next) {
+    async getLastCashRegister(request, response, next) {
         if (request.body.createCashRegister === true) {
+            console.log(`■ Getting last cash register to update...`);
 
-            console.log(`■ Creating last cash register...`);
-
-            const cashRegiser = await db.query(`SELECT * from dinero ORDER BY idEstadoCaja DESC LIMIT 1`,
+            await db.query(`SELECT * from dinero ORDER BY idEstadoCaja DESC LIMIT 1`,
                 (error, result, response) => {
                     if (error) {
                         console.log(error);
@@ -134,12 +139,51 @@ class Moves {
                             error: error.sqlMessage
                         });
                     }
-                    return result;
+                    request.body.lastCashRegisterUpdate = result[0];
+                    next();
                 });
-
+        }else{
+            next();
         }
-        next();
 
+    }
+
+    async getMovesCashRegister(request, response, next) {
+
+        if (request.body.createCashRegister === true) {
+            console.log('--- Getting moves of the last cash register...');
+
+            await db.query(`SELECT precio,tipo FROM movimientos WHERE idCorte = ?`,
+                request.body.lastCashRegisterUpdate.idEstadoCaja, (error, result, columns) => {
+                    if (error) {
+                        return response.json({
+                            status: 500,
+                            error
+                        });
+                    }
+                    request.body.movesCalculation = result;
+                    next();
+                });
+        }else{
+            next();
+        }
+    }
+
+    async saveUpdatedCashRegister(request,response,next){
+
+        console.log(`--- Updating new cash register of the day...`);
+
+        await db.query('UPDATE dinero SET montoFinal WHERE idEstadoCaja = ?',
+        request.body.lastCashRegisterUpdate.idEstadoCaja,(error,result,columns)=>{
+            if(error){
+                return response.json({
+                    status:200,
+                    error
+                });
+            }
+
+            next();
+        })
     }
 }
 
