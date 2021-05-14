@@ -1,4 +1,5 @@
 const months = [
+    '',
     'Enero',
     'Febrero',
     'Marzo',
@@ -31,5 +32,6 @@ function getActualDate(){
 }
 
 module.exports = {
-    getActualDate
+    getActualDate,
+    months
 }

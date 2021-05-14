@@ -214,6 +214,26 @@ class Moves {
             next();
         })
     }
+
+    async movesMonth(request,response,next){
+        console.log(`■ Getting moves of the month...`);
+
+        await db.query(`SELECT * FROM movimientos WHERE mesMovimiento = ? AND yearMovimiento = ?`,
+        [request.params.month,request.params.year],(error,result,columns)=>{
+            if(error){
+                return response.json({
+                    status:500,
+                    error
+                });
+            }
+
+            console.log(`■ Moves of the month fetched!`);
+            return response.json({
+                status:200,
+                moves:result
+            });
+        })
+    }
 }
 
 const ModelMoves = new Moves();

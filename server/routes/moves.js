@@ -13,6 +13,10 @@ router.get('/',
     ControllerMoves.parseMoves
 );
 
+router.get('/mensual/:month/:year',
+    ModelMoves.movesMonth
+)
+
 router.get('/:day/:month/:year',
     ModelMoves.getCashRegister,
     ModelMoves.getLastCashRegister,
