@@ -1,4 +1,3 @@
-const express = require('express');
 const db = require('../config');
 const DateServer = require('../middlewares/date');
 const ControllerMoves = require('../controller/move');

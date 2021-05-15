@@ -13,6 +13,7 @@ app.use('/api/inventario',require('./routes/inventory'));
 app.use('/api/clientes',require('./routes/clients'));
 app.use('/api/ticket',require('./routes/tickets'));
 app.use('/api/movimientos',require('./routes/moves'));
+app.use('/api/usuarios',require('./routes/users'));
 
 app.listen(port,()=>{
     console.log(`Server connected on port ${port}`);

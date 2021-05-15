@@ -1,7 +1,9 @@
 const {URL_CLIENT} = require('../config');
+const { validateLogIn } = require('../helpers/login');
 
 /* ------------------------- [CREATE MENU FOR EACH SCREEN] --------------- */
 
+validateLogIn();
 const menu = document.getElementById('menu');
 
 /* 1- Class name of fontawesome
