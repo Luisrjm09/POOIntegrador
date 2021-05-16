@@ -30,20 +30,16 @@ class Ticket{
         });   
 
         document.querySelectorAll('.editTicket').forEach(button=>{
-            button.addEventListener('click',(e)=>this.openModal(e,'btnModalEditClient'));
+            button.addEventListener('click',(e)=>this.editTicket(e));
         }); 
     }
 
-    openModal(e,idBtnModal){
-        let idTicket = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('id');
-        idTicket = parseInt(idTicket,10);
-
-        this.selectedTicket = this.tickets.find(ticket=>ticket.idTicket === idTicket);
-
-        this.fillModalEdit();
-
-        document.getElementById(idBtnModal).click();
+    editTicket(e){
+        // console.log(e);
+        const idTicket = parseInt(e.target.parentNode.parentNode.parentNode.id,10);
+        this.searchTicket(idTicket)
     }
+
 
     openConfirmDelete(e){
         let idTicket = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('id');
