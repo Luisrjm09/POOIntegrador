@@ -26,7 +26,8 @@ class Client{
         console.log(`■ Fetching list of clients...`);
 
         await db.query(`SELECT * FROM clientes 
-        INNER JOIN contacto ON contacto.idContacto = clientes.recomendadoPor`,(error,result,column)=>{
+        INNER JOIN contacto ON contacto.idContacto = clientes.recomendadoPor
+        ORDER by primerNombre ASC`,(error,result,column)=>{
             if(error){
                 console.log(error);
                 return response.json({

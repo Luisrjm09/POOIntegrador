@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/css/main.css" />
+
+    <title>Editar Ticket</title>
+
+    <script
+      defer
+      src="../node_modules/@fortawesome/fontawesome-free/js/brands.js"
+    ></script>
+    <script
+      defer
+      src="../node_modules/@fortawesome/fontawesome-free/js/solid.js"
+    ></script>
+    <script
+      defer
+      src="../node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"
+    ></script>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../public/media/icons-tab/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../public/media/icons-tab/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../public/media/icons-tab/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../public/media/icons-tab/site.webmanifest" />
+  </head>
+  <body>
+    <div class="container bg-ste mx-0 px-0">
+      <div class="content mx-0 px-0">
+        <div class="menu" id="menu"></div>
+
+        <button
+          id="btnEditService"
+          class="d-none"
+          data-toggle="modal"
+          data-target="#modalEditService"
+        ></button>
+
+        <div class="bodyContent management">
+          <div class="row">
+            <div class="col-12">
+              <h2>Editar ticket</h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">Informacion del cliente</div>
+            <div class="col-6">
+              <b>Folio #<span id="idTicket"> </span></b>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="row">
+            <div class="col-8">
+              <input type="d-none" value="0" hidden id="idClientSelected" />
+
+              <div class="d-flex justify-content-center">
+                <select class="w-80 text-center" name="" id="listClients" disabled>
+                  <option selected="true" disabled>
+                    -- SELECCIONA CLIENTE -- (OPCIONAL)
+                  </option>
+                </select>
+              </div>
+
+              <div
+                class="mt-2 d-flex justify-content-center align-items-center"
+              >
+                <div class="modalIcon">
+                  <i class="fas fa-user d-inline-block"></i>
+                </div>
+                <input
+                  id="ticketFirstName"
+                  type="text"
+                  class="d-inline newTicketName mr-3"
+                  placeholder="1er nombre"
+                  disabled
+                />
+
+                <input
+                  id="ticketMiddlename"
+                  type="text"
+                  class="d-inline newTicketName mr-3"
+                  placeholder="2do nombre"
+                  disabled
+                />
+
+                <input
+                  id="ticketLastname1"
+                  type="text"
+                  class="d-inline newTicketName mr-3"
+                  placeholder="Paterno"
+                  disabled
+                />
+
+                <input
+                  id="ticketLastname2"
+                  type="text"
+                  class="d-inline newTicketName"
+                  placeholder="Materno"
+                  disabled
+                />
+              </div>
+
+              <div
+                class="mt-2 d-flex justify-content-center align-items-center"
+              >
+                <div class="modalIcon">
+                  <i class="fas fa-phone-alt d-inline-block"></i>
+                </div>
+                <input
+                  id="ticketPhone"
+                  type="text"
+                  class="d-inline w-75"
+                  placeholder="Ingresar numero/whatsapp"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div class="col-4">
+              <!-- <button
+                class="ml-3 customBtn w-75 mx-auto mb-4"
+                data-toggle="modal"
+                data-target="#addNewClient"
+              >
+                Agregar cliente frecuente
+              </button> -->
+
+              <select name="repairState" class="w-75" id="repairState">
+                <option value="" selected="true" disabled>
+                  Estado de reparacion
+                </option>
+                <option value="0">Reparado</option>
+                <option value="1">No reparado</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-12">Informacion del equipo</div>
+          </div>
+
+          <hr />
+
+          <div class="row">
+            <div class="col-6">
+              <div class="d-flex align-items-center justify-content-end">
+                <label for="" class="font-weight-bold"
+                  >Fecha de recepcion</label
+                >
+                <input value="2021-01-01" type="date" class="ml-3 w-40" id="receptionDate" />
+              </div>
+
+              <div class="d-flex justify-content-end align-items-center mt-3">
+                <label class="w-20 font-weight-bold" for="">Marca</label>
+                <input class="w-80 ml-3" type="text" id="fabricant" />
+              </div>
+
+              <div class="d-flex justify-content-end align-items-center mt-3">
+                <label for="" class="w-20 font-weight-bold">Modelo</label>
+                <input class="w-80 ml-3" type="text" id="model" />
+              </div>
+
+              <div class="d-flex justify-content-end align-items-center mt-3">
+                <label class="w-20 font-weight-bold" for="">Servicio</label>
+                <select class="w-80 ml-3" name="" id="servicesList"></select>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="d-flex align-items-center justify-content-center">
+                <label for="" class="font-weight-bold">Fecha de entrega</label>
+                <input type="date" class="ml-3 w-40" id="deliveryDate" />
+              </div>
+
+              <div class="ml-5 mt-4">
+                <b class="text-center">Estado del equipo</b>
+                <hr />
+                <div id="stateEquipment" class="row">
+                  <div class="w-50 d-flex align-items-center">
+                    <input class="d-inline" type="checkbox" id="1" />
+                    <label class="d-inline mb-0 ml-2" for="1">Apagado</label>
+                  </div>
+
+                  <div class="w-50 d-flex align-items-center">
+                    <input class="d-inline" type="checkbox" id="2" />
+                    <label class="d-inline mb-0 ml-2" for="2">Chip</label>
+                  </div>
+
+                  <div class="w-50 d-flex align-items-center">
+                    <input class="d-inline" type="checkbox" id="3" />
+                    <label class="d-inline mb-0 ml-2" for="3">Encendido</label>
+                  </div>
+
+                  <div class="w-50 d-flex align-items-center">
+                    <input class="d-inline" type="checkbox" id="4" />
+                    <label class="d-inline mb-0 ml-2" for="4">Sim</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-12">
+              <label class="font-weight-bold" for=""
+                >Descripcion/Observaciones</label
+              >
+              <textarea
+                class="w-100"
+                name=""
+                id="description"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12" id="payMethod">
+              <div class="d-flex align-items-center justify-content-center">
+                <b class="mr-5">Pago</b>
+
+                <input type="radio" value="0" name="payMethod" id="cash" />
+                <label for="cash" class="mb-0 ml-2">Efectivo</label>
+
+                <input
+                  type="radio"
+                  value="1"
+                  class="ml-4"
+                  name="payMethod"
+                  id="creditCard"
+                />
+                <label for="creditCard" class="mb-0 ml-2">Tarjeta</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-4">
+              <label for="" class="font-weight-bold">Cotizacion</label>
+              <input class="ml-2 w-60" type="number" step="0.1" id="price" />
+            </div>
+
+            <div class="col-4">
+              <label for="" class="font-weight-bold">Total</label>
+              <input class="ml-2 w-80" type="number" step="0.1" id="total" />
+            </div>
+
+            <div class="col-4">
+              <button type="button" id="btnSaveTicket" class="customBtn w-80">
+                Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="addNewClient"
+      tabindex="-1"
+      aria-labelledby="addNewClient"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="formServices">
+            <p class="headerModal">Agregar cliente</p>
+
+            <div class="mt-2 d-flex justify-content-center align-items-center">
+              <div class="modalIcon">
+                <i class="fas fa-user d-inline-block"></i>
+              </div>
+              <input
+                id="addFirstName"
+                type="text"
+                class="d-inline w-50"
+                placeholder="Ingresar primer nombre"
+              />
+            </div>
+
+            <div class="mt-2 d-flex justify-content-center align-items-center">
+              <div class="modalIcon">
+                <i class="fas fa-user d-inline-block"></i>
+              </div>
+              <input
+                id="addMiddlename"
+                type="text"
+                class="d-inline w-50"
+                placeholder="Ingresar segundo nombre"
+              />
+            </div>
+
+            <div class="mt-2 d-flex justify-content-center align-items-center">
+              <div class="modalIcon">
+                <i class="fas fa-user d-inline-block"></i>
+              </div>
+              <input
+                id="addLastname1"
+                type="text"
+                class="d-inline w-50"
+                placeholder="Ingresar apellido paterno"
+              />
+            </div>
+
+            <div class="mt-2 d-flex justify-content-center align-items-center">
+              <div class="modalIcon">
+                <i class="fas fa-user d-inline-block"></i>
+              </div>
+              <input
+                id="addLastname2"
+                type="text"
+                class="d-inline w-50"
+                placeholder="Ingresar apellido materno"
+              />
+            </div>
+
+            <div class="mt-2 d-flex justify-content-center align-items-center">
+              <div class="modalIcon">
+                <i class="fas fa-phone-alt d-inline-block"></i>
+              </div>
+              <input
+                id="addClientPhone"
+                type="number"
+                class="d-inline w-50"
+                placeholder="Ingresar numero/whatsapp"
+              />
+            </div>
+
+            <div class="addRecommendation">
+              <div class="d-flex align-items-center justify-content-center">
+                <input type="radio" name="recommendation" id="fb" value="1" />
+                <label class="mb-0 ml-2" for="fb">Facebook</label>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-center">
+                <input
+                  type="radio"
+                  name="recommendation"
+                  id="whatsapp"
+                  value="2"
+                />
+                <label class="mb-0 ml-2" for="whatsapp">Whatsapp</label>
+              </div>
+
+              <div
+                class="d-flex align-items-center justify-content-center mb-3"
+              >
+                <input
+                  type="radio"
+                  name="recommendation"
+                  id="recommendation"
+                  value="3"
+                />
+                <label class="mb-0 ml-2" for="recommendation"
+                  >Recomendacion</label
+                >
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="cancelBtn w-25" data-dismiss="modal">
+                Salir
+              </button>
+              <button type="button" id="btnUpdateTicket" class="customBtn w-25">
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+    crossorigin="anonymous"
+  ></script>
+  <script src="../public/js/editTicket/indexBundle.js"></script>
+</html>

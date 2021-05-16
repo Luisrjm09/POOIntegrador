@@ -12,6 +12,12 @@ router.post('/agregar',
     ModelTickets.saveStatesTicket
 );
 
+router.post('/editar',
+    ControllerTickets.parseRecolectionDate,
+    ControllerTickets.parseDeliveryDate,
+    ModelTickets.update
+);
+
 router.get('/',
     ModelTickets.get,
     ControllerTickets.joinDates,
@@ -20,6 +26,11 @@ router.get('/',
 
 router.post('/borrar',
     ModelTickets.delete
+);
+
+router.get('/buscar/:idTicket',
+    ModelTickets.find,
+    ModelTickets.findState
 );
 
 module.exports = router;

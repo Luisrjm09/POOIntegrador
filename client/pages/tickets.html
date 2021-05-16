@@ -69,7 +69,7 @@
           <button
             class="ml-3 customBtn w-25 mb-4"
             data-toggle="modal"
-            data-target="#searchTicket"
+            data-target="#btnOpenSearchTicket"
           >
             Buscar Folio
           </button>
@@ -92,9 +92,65 @@
             <tbody id="bodyServices"></tbody>
           </table>
         </div>
-
       </div>
     </div>
+
+    <!-- Buscar folio -->
+    <div
+    class="modal fade"
+    id="btnOpenSearchTicket"
+    tabindex="-1"
+    aria-labelledby="btnOpenSearchTicket"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formSearchTicket">
+          <p class="headerModal">Agregar servicio</p>
+
+          <div
+            class="mt-5 d-flex justify-content-center align-items-center"
+          >
+            <div class="modalIcon">
+              <i class="fas fa-search d-inline-block"></i>
+            </div>
+            <input
+              id="ticketID"
+              type="number"
+              class="d-inline w-50"
+              placeholder="Escribe aqui"
+              required
+            />
+          </div>
+
+          <p 
+            id = 'errorSearchTicket'
+            class="d-none text-center text-danger font-weight-bold">
+              No existe el ticket
+          </p>
+
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="cancelBtn w-25"
+              data-dismiss="modal"
+            >
+              Salir
+            </button>
+
+            <input 
+              type="submit"
+              id="btnSearchTicket"
+              class="customBtn w-25"
+              value="Buscar"
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   </body>
   <script
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

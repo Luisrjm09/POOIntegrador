@@ -53,6 +53,7 @@ class Ticket extends HelperServices{
             const ticketPhone = document.getElementById('ticketPhone').value;
             const receptionDate = document.getElementById('receptionDate').value;
             const model = document.getElementById('model').value;
+            const fabricant = document.getElementById('fabricant').value;
             const deliveryDate = document.getElementById('deliveryDate').value;
             const description = document.getElementById('description').value;
             const price = document.getElementById('price').value;
@@ -60,6 +61,7 @@ class Ticket extends HelperServices{
             const repairState = document.getElementById('repairState').value;
             const service = document.getElementById('servicesList').value;
             const idClientSelected = document.getElementById('idClientSelected').value;
+
 
             const { data } = await axios.post(`${URL_API}ticket/agregar`,{
                 firstName,
@@ -77,7 +79,8 @@ class Ticket extends HelperServices{
                 repairState,
                 service,
                 idClientSelected,
-                equipmentState:this.equipmentState
+                equipmentState:this.equipmentState,
+                fabricant
             });
             
             if(data.status===200){

@@ -2,7 +2,7 @@ const db = require('../config');
 
 class Services{
     async fetchServices(request,response,next){
-        await db.query(`SELECT * FROM servicios`,(error,results,columns)=>{
+        await db.query(`SELECT * FROM servicios ORDER by nombre ASC`,(error,results,columns)=>{
             if(error){
                 return console.log(`■ There was an erro fetching the services ${error}`);
             }

@@ -17,7 +17,16 @@ class Alerts {
             icon:'success'
         }).then(result=>{
             {result.isConfirmed ? window.location.reload(true) : null;}
-        })
+        });
+    }
+
+    querySuccesRedirect(message,url){
+        sa2.fire({
+            title:message,
+            icon:'success'
+        }).then(result=>{
+            {result.isConfirmed ? window.location.href = url : null;}
+        });
     }
 
     queryError(message){

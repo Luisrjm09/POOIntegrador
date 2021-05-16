@@ -1,5 +1,5 @@
 const UI = require('../helpers/UI');
-const {URL_API} = require('../config');
+const {URL_API,URL_CLIENT} = require('../config');
 const axios = require('axios');
 const sa2 = require('sweetalert2');
 const { Alert } = require('../helpers/alerts');
@@ -90,7 +90,37 @@ class Ticket{
             console.log(error);
         }
     }
+
+    async searchTicket(ticketID){
+        try {
+            
+            const { data } = await axios.get(`${URL_API}ticket/buscar/${ticketID}`);
+
+            if(data.status===200){               
+                localStorage.setItem('ticketFounded',JSON.stringify(data));
+                window.location.href = `${URL_CLIENT}editarTicket.html`;
+                return;
+            }
+
+            document.getElementById('errorSearchTicket').classList.remove('d-none');
+
+            setTimeout(()=>{
+                document.getElementById('errorSearchTicket').classList.add('d-none');
+            },3000);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 const TicketUI = new Ticket();
 TicketUI.fetchTickets();
+
+document.getElementById('btnSearchTicket').addEventListener('click', e =>{
+    e.preventDefault();
+
+    const ticketID = parseInt(document.getElementById('ticketID').value,10);
+
+    TicketUI.searchTicket(ticketID);
+})
