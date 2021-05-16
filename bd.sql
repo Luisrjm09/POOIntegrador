@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2021 a las 01:16:25
+-- Tiempo de generación: 16-05-2021 a las 03:28:53
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.1
 
@@ -104,7 +104,11 @@ CREATE TABLE `dinero` (
 --
 
 INSERT INTO `dinero` (`idEstadoCaja`, `montoInicial`, `montoFinal`, `dia`, `mes`, `yearTime`) VALUES
-(1, 999.99, 0, 9, 5, 2021);
+(1, 999.99, 0, 9, 5, 2021),
+(5, 350.01, 0, 11, 5, 2021),
+(6, 350.01, 0, 13, 5, 2021),
+(7, 350.01, 0, 14, 5, 2021),
+(8, 350.01, 0, 15, 5, 2021);
 
 -- --------------------------------------------------------
 
@@ -215,7 +219,12 @@ INSERT INTO `movimientos` (`idMovimiento`, `nombre`, `tipo`, `precio`, `idCorte`
 (2, 'Internet', 1, 299.99, 1, 9, 5, 2021),
 (3, 'Ventana rota', 1, 949.99, 1, 9, 5, 2021),
 (4, 'Devolucion celular', 0, 999.99, 1, 9, 5, 2021),
-(5, 'Un billete tirado', 0, 100, 0, 9, 5, 2021);
+(5, 'Un billete tirado', 0, 100, 0, 9, 5, 2021),
+(6, 'Bateria cambio', 0, 500, 0, 13, 5, 2021),
+(7, 'Pantalla', 0, 1000, 0, 14, 5, 2021),
+(8, 'Iphone 4 bateria', 0, 1500, 0, 14, 5, 2021),
+(9, 'Xiaomi redmi a2 lite', 0, 2000, 0, 14, 5, 2021),
+(10, 'Internet', 1, 499.99, 0, 14, 5, 2021);
 
 -- --------------------------------------------------------
 
@@ -255,6 +264,7 @@ CREATE TABLE `ticket` (
   `mesEntrega` int(2) NOT NULL,
   `entregaYear` int(4) NOT NULL,
   `modelo` varchar(30) NOT NULL,
+  `marca` varchar(30) NOT NULL,
   `descripcion` varchar(50) NOT NULL,
   `servicio` varchar(50) NOT NULL,
   `cotizacion` float NOT NULL,
@@ -272,9 +282,9 @@ CREATE TABLE `ticket` (
 -- Volcado de datos para la tabla `ticket`
 --
 
-INSERT INTO `ticket` (`idTicket`, `diaRecoleccion`, `mesRecoleccion`, `recolectionYear`, `diaEntrega`, `mesEntrega`, `entregaYear`, `modelo`, `descripcion`, `servicio`, `cotizacion`, `medioContactoId`, `medioPagoId`, `totalPago`, `clienteId`, `estadoReparacion`, `estadoEquipo`, `nombreCliente`, `numeroCliente`) VALUES
-(38, 8, 5, 2021, 15, 5, 2021, 'Galaxy', 'Pila inflada', '2', 349.99, 1, 0, 399.99, 2, 1, 1, 'Adrian  Alardin Iracheta', 8121966517),
-(39, 8, 5, 2021, 11, 5, 2021, 'S Mini', 'No agarra el sim', '4', 299.99, 1, 1, 399.99, 3, 0, 1, 'Miguel Angel Cazares Caballero', 8164891501);
+INSERT INTO `ticket` (`idTicket`, `diaRecoleccion`, `mesRecoleccion`, `recolectionYear`, `diaEntrega`, `mesEntrega`, `entregaYear`, `modelo`, `marca`, `descripcion`, `servicio`, `cotizacion`, `medioContactoId`, `medioPagoId`, `totalPago`, `clienteId`, `estadoReparacion`, `estadoEquipo`, `nombreCliente`, `numeroCliente`) VALUES
+(40, 15, 5, 2021, 21, 5, 2021, 'Redmi A2 Lite', 'Xiaomi', 'Pantalla estrellada y touch no sirve en esa area. ', '1', 750, 1, 0, 999.99, 1, 1, 1, 'Jose  Luis Perez  Olguin', 8111932475),
+(41, 10, 5, 2021, 17, 5, 2021, 'Galaxy', 'Samsumg', 'Pila inflada, riesgo de explotar. No perforar', '2', 1000, 1, 0, 2000, 2, 1, 1, 'Adrian  Alardin Iracheta', 8121966517);
 
 -- --------------------------------------------------------
 
@@ -301,7 +311,15 @@ INSERT INTO `ticketestados` (`idTicketsEstado`, `idEstadoTicketNombre`, `ticketC
 (17, 1, 39, 0),
 (18, 2, 39, 1),
 (19, 3, 39, 1),
-(20, 4, 39, 1);
+(20, 4, 39, 1),
+(21, 1, 40, 0),
+(22, 2, 40, 1),
+(23, 3, 40, 1),
+(24, 4, 40, 1),
+(25, 1, 41, 1),
+(26, 2, 41, 0),
+(27, 3, 41, 0),
+(28, 4, 41, 0);
 
 -- --------------------------------------------------------
 
@@ -314,6 +332,13 @@ CREATE TABLE `usuario` (
   `username` varchar(15) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `username`, `password`) VALUES
+(1, 'jperez', '$2b$10$mNqPVtBD1F7fZvV/ZlMCbO/oJTihkCq9m5K3dkRKtpHVeJ5C.uIJS');
 
 --
 -- Índices para tablas volcadas
@@ -430,7 +455,7 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `dinero`
 --
 ALTER TABLE `dinero`
-  MODIFY `idEstadoCaja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idEstadoCaja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -466,7 +491,7 @@ ALTER TABLE `inventario`
 -- AUTO_INCREMENT de la tabla `movimientos`
 --
 ALTER TABLE `movimientos`
-  MODIFY `idMovimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idMovimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
@@ -478,19 +503,19 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `ticketestados`
 --
 ALTER TABLE `ticketestados`
-  MODIFY `idTicketsEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idTicketsEstado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
